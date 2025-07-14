@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 爪子脚趾 -->
+  <ellipse cx="35" cy="25" rx="8" ry="12" fill="#0F1114"/>
+  <ellipse cx="50" cy="20" rx="8" ry="12" fill="#0F1114"/>
+  <ellipse cx="65" cy="25" rx="8" ry="12" fill="#0F1114"/>
+  <ellipse cx="25" cy="40" rx="8" ry="12" fill="#0F1114"/>
+  <ellipse cx="75" cy="40" rx="8" ry="12" fill="#0F1114"/>
+  <!-- 爪子掌心 -->
+  <path d="M50 35 Q30 40 25 60 Q25 75 35 80 Q45 85 50 85 Q55 85 65 80 Q75 75 75 60 Q70 40 50 35" fill="#0F1114"/>
+  <!-- 医疗十字 -->
+  <rect x="46" y="50" width="8" height="20" fill="white"/>
+  <rect x="40" y="56" width="20" height="8" fill="white"/>
+</svg> 
