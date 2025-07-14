@@ -1,10 +1,14 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useI18n } from '../../lib/i18n'
 import ScrollAnimatedElement from '../../components/ui/ScrollAnimatedElement'
 import Modal from '../../components/ui/Modal'
 import OptimizedImage from '../../components/ui/OptimizedImage'
+
+// AI面试系统API基础URL
+// 您可以根据实际情况修改这个URL，比如不同的端口或域名
+const AI_INTERVIEW_API_BASE = process.env.NEXT_PUBLIC_AI_INTERVIEW_API || 'http://localhost:3000/api/ai-interview'
 
 interface JobPosition {
   id: string
@@ -105,29 +109,311 @@ const jobPositions: JobPosition[] = [
 // 辅助函数来获取嵌套的翻译文本
 const getNestedTranslation = (obj: any, path: string): string => {
   const keys = path.split('.')
-  let current = obj
+  let result = obj
   for (const key of keys) {
-    if (current && typeof current === 'object' && key in current) {
-      current = current[key]
-    } else {
-      return path // 如果找不到翻译，返回键名
-    }
+    result = result?.[key]
+    if (result === undefined) return path
   }
-  return typeof current === 'string' ? current : path
+  return result || path
 }
 
 export default function CareersPage() {
   const { t } = useI18n()
   const [selectedJob, setSelectedJob] = useState<JobPosition | null>(null)
-  const [showJobModal, setShowJobModal] = useState(false)
-  const [resumeFile, setResumeFile] = useState<File | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
   
+  // 表单和简历相关状态
+  const [showJobModal, setShowJobModal] = useState(false)
+  const [resumeFile, setResumeFile] = useState<File | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
+  
+  // AI面试相关状态
+  const [isAIInterviewMode, setIsAIInterviewMode] = useState(false)
+  const [currentSessionId, setCurrentSessionId] = useState<string | null>(null)
+  const [conversationHistory, setConversationHistory] = useState<Array<{role: 'user' | 'assistant', content: string, timestamp: Date}>>([])
+  const [currentMessage, setCurrentMessage] = useState('')
+  const [isListening, setIsListening] = useState(false)
+  const [isProcessing, setIsProcessing] = useState(false)
+  const [isEvaluating, setIsEvaluating] = useState(false)
+  const [interviewSummary, setInterviewSummary] = useState<any>(null)
+
+  
+  // Refs
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null)
+  const audioChunksRef = useRef<Blob[]>([])
+
   const handleJobClick = (job: JobPosition) => {
     setSelectedJob(job)
     setShowJobModal(true)
+    setIsAIInterviewMode(false)
+    setConversationHistory([])
+    setCurrentSessionId(null)
+    setInterviewSummary(null)
   }
+
+  // AI 面试相关函数
+  const startAIInterview = async () => {
+    if (!selectedJob) return;
+    
+    setIsAIInterviewMode(true);
+    setIsProcessing(true);
+    setConversationHistory([]);
+    setInterviewSummary(null);
+    
+    try {
+      const jobTitle = getNestedTranslation(t, selectedJob.titleKey);
+      const response = await fetch(`${AI_INTERVIEW_API_BASE}/start`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          position: jobTitle,
+          candidateName: formData.name || '候选人',
+          candidateEmail: formData.email || '',
+          resumeAnalysis: null // 可以在这里传入简历分析结果
+        })
+      });
+      
+      const data = await response.json();
+      if (data.success) {
+        setCurrentSessionId(data.sessionId);
+        const welcomeMessage = {
+          role: 'assistant' as const,
+          content: data.message || `您好！欢迎参加${jobTitle}职位的AI面试。请点击下方的"开始录音"按钮，用语音回答我的问题。准备好了就开始吧！`,
+          timestamp: new Date()
+        };
+        setConversationHistory([welcomeMessage]);
+        setCurrentMessage(data.message || '');
+      } else {
+        throw new Error(data.error || '面试启动失败');
+      }
+    } catch (error) {
+      console.error('开始AI面试失败:', error);
+      alert('AI面试启动失败，请稍后再试');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const startVoiceRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mediaRecorder = new MediaRecorder(stream);
+      mediaRecorderRef.current = mediaRecorder;
+      audioChunksRef.current = [];
+
+      mediaRecorder.ondataavailable = (event) => {
+        audioChunksRef.current.push(event.data);
+      };
+
+      mediaRecorder.onstop = async () => {
+        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+        await processVoiceInput(audioBlob);
+        stream.getTracks().forEach(track => track.stop());
+      };
+
+      mediaRecorder.start();
+      setIsListening(true);
+    } catch (error) {
+      console.error('语音录制失败:', error);
+      alert('无法访问麦克风，请检查权限设置');
+    }
+  };
+
+  const stopVoiceRecording = () => {
+    if (mediaRecorderRef.current && isListening) {
+      mediaRecorderRef.current.stop();
+      setIsListening(false);
+    }
+  };
+
+  // 处理面试完成和评估
+  const handleInterviewCompletion = async () => {
+    if (!selectedJob || !currentSessionId || conversationHistory.length === 0) return;
+    
+    setIsEvaluating(true);
+    
+    try {
+      const jobTitle = getNestedTranslation(t, selectedJob.titleKey);
+      
+      // 调用面试结束API
+      const evaluationResponse = await fetch(`${AI_INTERVIEW_API_BASE}/end`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          conversationHistory: conversationHistory,
+          position: jobTitle,
+          candidateName: formData.name || '候选人',
+          candidateEmail: formData.email || '',
+          sessionId: currentSessionId
+        })
+      });
+      
+      const evaluationData = await evaluationResponse.json();
+      
+      if (evaluationData.success) {
+        setInterviewSummary(evaluationData.summary);
+        
+        // 显示评估结果
+        const summaryMessage = {
+          role: 'assistant' as const,
+          content: `
+面试评估完成！
+
+📊 综合评分：${evaluationData.summary.overallScore}/10
+
+💪 技术技能：
+${evaluationData.summary.technicalSkills.map((s: string) => `• ${s}`).join('\n')}
+
+📈 优势表现：
+${evaluationData.summary.strengths.map((s: string) => `• ${s}`).join('\n')}
+
+🔍 改进建议：
+${evaluationData.summary.weaknesses.map((s: string) => `• ${s}`).join('\n')}
+
+推荐结果：${evaluationData.summary.recommendation}
+
+感谢您参加本次AI面试！面试数据已保存到后台。
+          `,
+          timestamp: new Date()
+        };
+        
+        setConversationHistory(prev => [...prev, summaryMessage]);
+        
+        console.log('面试评估完成，会话ID:', currentSessionId);
+      } else {
+        throw new Error(evaluationData.error || '评估失败');
+      }
+    } catch (error) {
+      console.error('面试评估失败:', error);
+      
+      const errorMessage = {
+        role: 'assistant' as const,
+        content: '面试评估过程中出现问题，但您的面试内容已记录。我们的HR团队会人工评估您的表现。',
+        timestamp: new Date()
+      };
+      setConversationHistory(prev => [...prev, errorMessage]);
+    } finally {
+      setIsEvaluating(false);
+    }
+  };
+
+  const processVoiceInput = async (audioBlob: Blob) => {
+    setIsProcessing(true);
+    
+    try {
+      // 语音转文字 - 转换为base64
+      const arrayBuffer = await audioBlob.arrayBuffer();
+      const base64Audio = Buffer.from(arrayBuffer).toString('base64');
+      
+      const speechResponse = await fetch(`${AI_INTERVIEW_API_BASE}/voice-recognition`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          audioData: base64Audio,
+          format: 'pcm'
+        })
+      });
+      
+      const speechData = await speechResponse.json();
+      if (!speechData.success) {
+        throw new Error('语音识别失败');
+      }
+      
+      const userText = speechData.text;
+      await sendMessageToAI(userText);
+      
+    } catch (error) {
+      console.error('处理语音输入失败:', error);
+      const errorMessage = {
+        role: 'assistant' as const,
+        content: '抱歉，处理您的回答时出现了问题，请重试。',
+        timestamp: new Date()
+      };
+      setConversationHistory(prev => [...prev, errorMessage]);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+
+
+  // 发送消息给AI的通用函数
+  const sendMessageToAI = async (userText: string) => {
+    setIsProcessing(true);
+    
+    try {
+      // 添加用户消息到对话历史
+      const userMessage = {
+        role: 'user' as const,
+        content: userText,
+        timestamp: new Date()
+      };
+      const updatedHistory = [...conversationHistory, userMessage];
+      setConversationHistory(updatedHistory);
+      
+      // 获取AI回复
+      const jobTitle = getNestedTranslation(t, selectedJob?.titleKey || '');
+      const aiResponse = await fetch(`${AI_INTERVIEW_API_BASE}/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userText,
+          conversationHistory: updatedHistory,
+          position: jobTitle,
+          candidateName: formData.name || '候选人',
+          candidateEmail: formData.email || '',
+          sessionId: currentSessionId
+        })
+      });
+      
+      const aiData = await aiResponse.json();
+      if (aiData.success) {
+        const aiMessage = {
+          role: 'assistant' as const,
+          content: aiData.message,
+          timestamp: new Date()
+        };
+        const finalHistory = [...updatedHistory, aiMessage];
+        setConversationHistory(finalHistory);
+        setCurrentMessage(aiData.message);
+        
+        // 检查面试是否应该结束（如果AI回复包含结束标记）
+        if (aiData.message.includes('[END_INTERVIEW]') || finalHistory.length >= 20) {
+          setTimeout(() => {
+            handleInterviewCompletion();
+          }, 2000);
+        }
+      } else {
+        throw new Error(aiData.error || 'AI回复失败');
+      }
+    } catch (error) {
+      console.error('发送消息失败:', error);
+      const errorMessage = {
+        role: 'assistant' as const,
+        content: '抱歉，处理您的回答时出现了问题，请重试。',
+        timestamp: new Date()
+      };
+      setConversationHistory(prev => [...prev, errorMessage]);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const endAIInterview = async () => {
+    setIsListening(false);
+    setIsProcessing(false);
+    if (mediaRecorderRef.current) {
+      mediaRecorderRef.current.stop();
+    }
+    
+    // 立即触发面试评估
+    await handleInterviewCompletion();
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, retryCount = 0) => {
     e.preventDefault();
@@ -912,7 +1198,123 @@ export default function CareersPage() {
               </ul>
             </div>
             
+            {/* AI 面试功能区域 */}
             <div className="pt-4 border-t">
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <button
+                  onClick={startAIInterview}
+                  disabled={isProcessing}
+                  className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-6 rounded-full font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
+                >
+                  {isProcessing ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      启动中...
+                    </>
+                  ) : (
+                    <>
+                      🤖 开始 AI 面试
+                    </>
+                  )}
+                </button>
+                
+                <div className="flex-1 text-center">
+                  <div className="text-sm text-gray-600">或者</div>
+                </div>
+              </div>
+              
+              {/* AI 面试界面 */}
+              {isAIInterviewMode && (
+                <div className="mb-6 p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border border-blue-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-lg font-bold text-blue-900">🤖 AI 面试进行中</h4>
+                    <button
+                      onClick={endAIInterview}
+                      disabled={isEvaluating}
+                      className="text-red-500 hover:text-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isEvaluating ? '评估中...' : '结束面试'}
+                    </button>
+                  </div>
+                  
+                  {/* 评估状态提示 */}
+                  {isEvaluating && (
+                    <div className="mb-4 p-3 bg-yellow-100 border border-yellow-200 rounded-lg">
+                      <div className="flex items-center gap-2 text-yellow-700">
+                        <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        </svg>
+                        <span className="text-sm font-medium">正在进行AI评估，请稍候...</span>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* 聊天记录 */}
+                  <div className="max-h-60 overflow-y-auto mb-4 space-y-3">
+                    {conversationHistory.map((message, index) => (
+                      <div
+                        key={index}
+                        className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                      >
+                        <div
+                          className={`max-w-xs px-4 py-2 rounded-lg ${
+                            message.role === 'user'
+                              ? 'bg-blue-500 text-white'
+                              : 'bg-white text-gray-800 border border-gray-200'
+                          }`}
+                        >
+                          <p className="text-sm whitespace-pre-line">{message.content}</p>
+                          <p className="text-xs opacity-75 mt-1">
+                            {message.timestamp.toLocaleTimeString('zh-CN')}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* 语音控制按钮 */}
+                  <div className="flex justify-center gap-4 py-4">
+                    {isListening ? (
+                      <button
+                        onClick={stopVoiceRecording}
+                        disabled={isProcessing || isEvaluating}
+                        className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-semibold transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                        停止录音
+                      </button>
+                    ) : (
+                      <button
+                        onClick={startVoiceRecording}
+                        disabled={isProcessing || isEvaluating}
+                        className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        🎤 开始录音
+                      </button>
+                    )}
+                    
+                    {/* 处理状态显示 */}
+                    {(isProcessing || isEvaluating) && (
+                      <div className="flex items-center text-blue-600">
+                        <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        </svg>
+                        {isEvaluating ? '评估中...' : '处理中...'}
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="mt-2 text-center text-sm text-gray-600">
+                    💡 提示：点击"开始录音"按钮进行语音回答
+                  </div>
+                </div>
+              )}
+
               <h3 className="text-lg font-bold text-paw-dark mb-4">💼 {getNestedTranslation(t, 'careers.resumeForm.title')}</h3>
               
               <form onSubmit={handleSubmit} className="space-y-4">

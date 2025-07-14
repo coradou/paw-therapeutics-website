@@ -31,4 +31,26 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts 
+next-env.d.ts
+
+# 项目特定的忽略文件
+*.log
+cookies.txt
+admin_cookies.txt
+dev.log
+
+# 临时上传文件（但保留uploads目录结构）
+# data/uploads/*.pdf
+# data/uploads/*.docx
+
+# IDE和编辑器文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统生成的文件
+Thumbs.db
+ehthumbs.db
+Desktop.ini 

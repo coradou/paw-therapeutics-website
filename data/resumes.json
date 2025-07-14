@@ -58,5 +58,61 @@
       "analyzedAt": "2025-07-13T14:32:30.716Z"
     },
     "resumeContent": "姓名: 卢宁\n邮箱: 1015738312@qq.com\n申请岗位: 高级生物信息学工程师\n自我介绍: \n简历文件: 卢宁.docx"
+  },
+  {
+    "name": "卢宁",
+    "email": "freeninglu@outlook.com",
+    "position": "产品经理",
+    "message": "123",
+    "resumeFileName": "卢宁简历.pdf",
+    "id": "nl0g2uy3ro",
+    "submittedAt": "2025-07-14T02:51:31.233Z",
+    "status": "new",
+    "aiAnalysis": {
+      "skills": [
+        "自我介绍",
+        "简历撰写",
+        "文件管理"
+      ],
+      "experience": "工作经验未在提供的内容中明确提及，建议补充详细的工作经历和项目经验。",
+      "education": "教育背景未在提供的内容中明确提及，建议补充相关的学历和专业信息。",
+      "summary": "候选人提供的简历内容较为简略，缺乏关键的工作经验和教育背景信息。需要进一步补充详细信息以评估其适合产品经理岗位的能力。",
+      "score": 30,
+      "suggestions": [
+        "补充详细的工作经历和项目经验",
+        "提供教育背景和相关专业信息",
+        "完善自我介绍，突出与产品经理岗位相关的技能和经验"
+      ],
+      "analyzedAt": "2025-07-14T02:51:43.141Z"
+    },
+    "resumeContent": "姓名: 卢宁\n邮箱: freeninglu@outlook.com\n申请岗位: 产品经理\n自我介绍: 123\n简历文件: 卢宁简历.pdf"
+  },
+  {
+    "name": "卢宁",
+    "email": "freeninglu@outlook.com",
+    "position": "产品经理",
+    "message": "123",
+    "resumeFileName": "卢宁简历.pdf",
+    "id": "rvl6xihets",
+    "submittedAt": "2025-07-14T02:54:02.885Z",
+    "status": "new",
+    "aiAnalysis": {
+      "skills": [
+        "自我介绍",
+        "简历撰写",
+        "文件管理"
+      ],
+      "experience": "工作经验未在提供的内容中明确提及，需进一步查看简历文件以获取详细信息。",
+      "education": "教育背景未在提供的内容中明确提及，需进一步查看简历文件以获取详细信息。",
+      "summary": "候选人提供的简历内容较为简略，缺乏具体的工作经验和教育背景信息。需要进一步查看简历文件以进行全面评估。",
+      "score": 50,
+      "suggestions": [
+        "补充详细的工作经验描述",
+        "提供具体的教育背景信息",
+        "完善自我介绍内容"
+      ],
+      "analyzedAt": "2025-07-14T02:54:19.833Z"
+    },
+    "resumeContent": "姓名: 卢宁\n邮箱: freeninglu@outlook.com\n申请岗位: 产品经理\n自我介绍: 123\n简历文件: 卢宁简历.pdf"
   }
 ]
