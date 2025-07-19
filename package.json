@@ -10,7 +10,8 @@
     "analyze-images": "node scripts/optimize-images.js",
     "compress-large": "node scripts/compress-large-images.js",
     "perf-check": "node scripts/performance-check.js",
-    "build:analyze": "npm run build && npx @next/bundle-analyzer"
+    "build:analyze": "npm run build && npx @next/bundle-analyzer",
+    "deploy:server": "node scripts/create-deployment-package.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.0",
@@ -30,12 +31,10 @@
     "@types/react": "^18.2.39",
     "@types/react-dom": "^18.2.17",
     "autoprefixer": "^10.4.16",
-    "critters": "^0.0.23",
-    "eslint": "^8.54.0",
+    "eslint": "^8.56.0",
     "eslint-config-next": "14.0.3",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.5",
-    "typescript": "^5.3.2",
-    "vercel": "^43.3.0"
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.3.2"
   }
 }

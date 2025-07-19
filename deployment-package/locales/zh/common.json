@@ -1,0 +1,1214 @@
+{
+  "company": {
+    "name": "爪子制药",
+    "tagline": "AI驱动的跨物种延寿药物发现平台",
+    "description": "利用人工智能技术，加速宠物和人类的抗衰老药物研发"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "team": "核心团队",
+    "pipeline": "研发管线",
+    "products": "产品与服务",
+    "investors": "投资者关系",
+    "careers": "加入我们",
+    "awards": "成就里程碑",
+    "blog": "洞察与新闻",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "tagline": "AI驱动创新",
+    "title": "用AI延续",
+    "subtitle": "生命的美好",
+    "platform": "跨物种延寿药物发现平台",
+    "description": "爪子制药致力于通过人工智能技术，加速宠物和人类的抗衰老药物研发，让每一个生命都能享受更长久、更健康的陪伴。",
+    "primary": "了解更多",
+    "secondary": "联系我们",
+    "bottomText": "守护每一个生命的美好时光"
+  },
+  "stats": {
+    "title": "数据驱动的创新",
+    "subtitle": "用数字见证科技的力量",
+    "compounds": { "value": "10K+", "label": "化合物筛选" },
+    "accuracy": { "value": "95%", "label": "AI预测准确率" },
+    "time": { "value": "80%", "label": "时间缩短" },
+    "partners": { "value": "20+", "label": "合作伙伴" }
+  },
+  "features": {
+    "title": "我们的优势",
+    "subtitle": "融合AI技术与生物科学，引领药物研发新纪元",
+    "ai": {
+      "title": "AI驱动研发",
+      "description": "利用深度学习和大数据分析，加速药物发现进程"
+    },
+    "crossSpecies": {
+      "title": "跨物种转化",
+      "description": "从宠物到人类的创新药物研发路径"
+    },
+    "precision": {
+      "title": "精准医疗",
+      "description": "基于甲基化检测的个性化健康管理方案"
+    }
+  },
+  "team": {
+    "title": "核心团队",
+    "subtitle": "汇聚来自牛津大学、帝国理工、UC Berkeley的顶尖学者",
+    "subtitle2": "携手诺贝尔化学奖得主和行业专家",
+    "description": "打造全球领先的AI驱动生物医药公司"
+  },
+  "home": {
+    "hero": {
+      "title": "用AI延续生命的美好",
+      "subtitle": "跨物种延寿药物发现平台",
+      "description": "爪子制药致力于通过人工智能技术，加速宠物和人类的抗衰老药物研发，让每一个生命都能享受更长久、更健康的陪伴。",
+      "cta": {
+        "primary": "了解更多",
+        "secondary": "联系我们"
+      }
+    },
+    "features": {
+      "title": "我们的优势",
+      "ai": {
+        "title": "AI驱动研发",
+        "description": "利用深度学习和大数据分析，加速药物发现进程"
+      },
+      "crossSpecies": {
+        "title": "跨物种转化",
+        "description": "从宠物到人类的创新药物研发路径"
+      },
+      "precision": {
+        "title": "精准医疗",
+        "description": "基于甲基化检测的个性化健康管理方案"
+      }
+    }
+  },
+  "about": {
+    "brandPromise": "爪子制药，让爱永存",
+    "poetic1": "用科学延续生命的温暖",
+    "poetic2": "让每一份爱都永恒绽放",
+    "aboutTitle": "关于爪子制药",
+    "mission": {
+      "title": "企业使命",
+      "content": "通过AI驱动的跨物种延寿药物发现平台，开发突破性药物，延长人类与宠物的健康寿命，让每一份爱都能持续更久。"
+    },
+    "vision": {
+      "title": "企业愿景",
+      "content": "成为全球领先的跨物种延寿药物创新企业，构建人与宠物共同健康长寿的美好未来，让科学技术服务于生命的延续。"
+    },
+    "values": {
+      "title": "核心价值观",
+      "content": "以爱为本，科学为先，创新为魂，责任为重。坚持严谨的科学态度，追求卓越的研发品质，承担社会责任。"
+    },
+    "responsibility": {
+      "title": "企业责任与承诺",
+      "subtitle": "以负责任的方式推动科学进步，造福社会",
+      "ethics": {
+        "title": "科学伦理承诺",
+        "content": "严格遵守科学伦理，所有研究活动符合国际伦理标准"
+      },
+      "sustainability": {
+        "title": "可持续发展",
+        "content": "致力于环境保护和可持续发展，承担企业社会责任"
+      },
+      "animalWelfare": {
+        "title": "关爱动物福利",
+        "content": "始终把动物福利放在首位，推动人道主义科学研究"
+      },
+      "healthcare": {
+        "title": "普惠健康",
+        "content": "让更多家庭能够负担得起优质的健康服务和药物"
+      }
+    },
+    "keyMetrics": {
+      "title": "核心数据与成就",
+      "subtitle": "数据驱动的科研实力，见证我们的专业能力",
+      "projects": "研发项目",
+      "investment": "研发投入占比",
+      "partnerships": "顶尖院校合作",
+      "founded": "成立年份"
+    },
+    "scientificExcellence": {
+      "title": "科研实力与创新平台",
+      "subtitle": "我们汇聚了来自牛津大学、帝国理工学院和UC Berkeley的顶尖学者，团队包含诺贝尔化学奖得主。",
+      "aiDriven": {
+        "title": "AI驱动的药物发现",
+        "content": "运用人工智能技术，大幅提升药物发现效率，缩短研发周期"
+      },
+      "crossSpecies": {
+        "title": "跨物种研究平台",
+        "content": "独特的跨物种研究方法，同时服务人类和宠物健康"
+      },
+      "international": {
+        "title": "国际化标准",
+        "content": "遵循国际GMP标准，确保药物研发的高质量和安全性"
+      },
+      "metrics": {
+        "firstTarget": "首发靶点",
+        "keyTarget": "关键靶点",
+        "coreTarget": "核心靶点",
+        "researchProjects": "在研项目"
+      }
+    },
+    "researchAreas": {
+      "title": "研发领域",
+      "subtitle": "专注于三大核心领域，推动生命科学发展",
+      "areas": [
+        "动物延寿药物",
+        "老年疾病治疗",
+        "人类抗衰药物"
+      ],
+      "animalLongevity": {
+        "title": "动物延寿药物",
+        "content": "专注于宠物抗衰老药物研发，延长宠物健康寿命，让人宠陪伴更久",
+        "projects": "重点项目：PAW-001 (IL11), PAW-002 (IGF-1)"
+      },
+      "agingDiseases": {
+        "title": "老年疾病治疗",
+        "content": "针对关节炎、胰腺炎等老年疾病，开发创新治疗方案",
+        "projects": "重点项目：PAW-004 (关节炎), PAW-005 (胰腺炎)"
+      },
+      "humanAntiAging": {
+        "title": "人类抗衰药物",
+        "content": "将成功的宠物药物转化为人类应用，促进健康老龄化",
+        "projects": "重点项目：PAW-003 (TGF-β)"
+      }
+    },
+    "corporateResponsibilityAlt": {
+      "title": "企业责任与承诺",
+      "subtitle": "以负责任的方式推动科学进步，造福社会",
+      "scientificEthics": {
+        "title": "科学伦理承诺",
+        "content": "严格遵守科学伦理，确保所有研究活动符合国际伦理标准"
+      },
+      "sustainability": {
+        "title": "可持续发展",
+        "content": "致力于环境保护和可持续发展，承担企业社会责任"
+      },
+      "animalWelfare": {
+        "title": "关爱动物福利",
+        "content": "始终把动物福利放在首位，推动人道主义科学研究"
+      },
+      "publicHealth": {
+        "title": "普惠健康",
+        "content": "让更多家庭能够负担得起优质的健康服务和药物"
+      }
+    },
+    "companyPhoto": {
+      "title": "我们的使命写照",
+      "subtitle": "每一份爱都值得被科学守护",
+      "imageAlt": "璐璐爬树 - 代表我们守护每一份爱的使命",
+      "imageTitle": "璐璐的成长时光",
+      "imageDescription": "每一个美好瞬间，都是我们努力的意义"
+    },
+    "leadership": {
+      "title": "领导团队",
+      "subtitle": "汇聚全球顶尖科学家，引领生命科学创新",
+      "worldClassTeam": {
+        "title": "世界级科学家团队",
+        "content": "来自牛津大学、帝国理工学院、UC Berkeley等顶尖学府"
+      },
+      "nobelLaureate": {
+        "title": "诺贝尔奖得主",
+        "content": "诺贝尔化学奖得主为核心顾问，指导前沿科学研究"
+      },
+      "interdisciplinary": {
+        "title": "跨学科专家",
+        "content": "生物学、化学、AI、兽医学等多领域专家深度协作"
+      }
+    },
+    "callToAction": {
+      "title": "加入我们，共创生命科学的未来",
+      "subtitle": "与我们一起用科学的力量，让每一份爱都能延续更久",
+      "learnPipeline": "了解研发管线",
+      "contactUs": "联系我们"
+    },
+    "title": "爱心点亮生命，科学延续陪伴",
+    "subtitle": "爪子制药致力于通过人工智能技术，加速宠物和人类的抗衰老药物研发，让每一个生命都能享受更长久、更健康的陪伴。",
+    "videoTitle": "爪子制药介绍视频",
+    "description": "以前沿科学技术为基石，以全球领先的研发能力为驱动。",
+    "quote": "一步一个脚印，扎实推进研发，爪子制药是一支怀抱梦想与爱心的团队，汇聚牛津大学、帝国理工和UC Berkeley的顶尖学者，并携手诺贝尔化学奖得主和行业专家，共同探索科学的边界。",
+    "commitment": {
+      "title": "我们的承诺",
+      "items": [
+        "专注于国际领先一类新药：集中于延寿药物",
+        "使中国宠物猫狗家长尽早用到国际一流新药",
+        "高效资源整合加快新药上市速度，严控药品质量",
+        "把公司打造成国内外延寿药行业的领军企业"
+      ]
+    }
+  },
+  "pipeline": {
+    "title": "研发管线",
+    "subtitle": "聚焦犬类延寿与老年疾病治疗",
+    "chartHeaders": [
+      "项目名称",
+      "靶点",
+      "科研",
+      "临床",
+      "获证",
+      "人源化",
+      "合作",
+      ""
+    ],
+    "dogLongevity": "犬类延寿",
+    "elderlyDiseases": "老年疾病",
+    "projects": {
+      "paw001": {
+        "name": "PAW-001",
+        "target": "IL11",
+        "status": "临床阶段",
+        "description": "IL11抑制剂，用于延缓犬类衰老进程，改善老年犬的生活质量",
+        "timeline": [
+          "2025科研",
+          "2026临床获证",
+          "2028人源化",
+          "2029合作"
+        ]
+      },
+      "paw002": {
+        "name": "PAW-002",
+        "target": "IGF-1",
+        "status": "临床阶段",
+        "partner": "粒影生物",
+        "description": "IGF-1调节剂，与粒影生物合作开发，用于延长犬类寿命",
+        "timeline": [
+          "2025科研",
+          "2028合作"
+        ]
+      },
+      "paw003": {
+        "name": "PAW-003",
+        "target": "TGF-β",
+        "status": "研发阶段",
+        "description": "TGF-β抑制剂，用于治疗犬类纤维化疾病和延缓衰老",
+        "timeline": [
+          "2025科研",
+          "2027临床获证"
+        ]
+      },
+      "paw004": {
+        "name": "PAW-004",
+        "target": "关节炎靶点",
+        "status": "临床前",
+        "description": "针对犬类关节炎的创新治疗药物，改善老年犬的关节健康",
+        "timeline": [
+          "2025科研",
+          "2028临床获证"
+        ]
+      },
+      "paw005": {
+        "name": "PAW-005",
+        "target": "胰腺炎靶点",
+        "status": "研发阶段",
+        "description": "治疗犬类胰腺炎的创新药物，提高老年犬的消化系统健康",
+        "timeline": [
+          "2025科研",
+          "2027临床获证"
+        ]
+      }
+    },
+    "details": {
+      "title": "研发药物管线详情",
+      "dogLongevityTitle": "犬类延寿项目",
+      "elderlyDiseasesTitle": "老年疾病项目",
+      "timelineLabel": "时间线："
+    },
+    "academicSupport": {
+      "title": "学术支持",
+      "papers": {
+        "natureComm": {
+          "journal": "Nature Communications",
+          "title": "AI驱动的药物发现新方法"
+        },
+        "nature": {
+          "journal": "Nature",
+          "title": "跨物种延寿机制研究"
+        },
+        "oxford": {
+          "journal": "Oxford Academic",
+          "title": "甲基化检测技术应用"
+        }
+      }
+    }
+  },
+  "products": {
+    "title": "产品与服务",
+    "subtitle": "创新科技，守护宠物健康",
+    "imagePlaceholder": "请上传产品图片",
+    "methylationKit": {
+      "name": "宠物衰老甲基化检测试剂盒",
+      "tag": "专有技术",
+      "title": "精准评估宠物生理年龄",
+      "description": "通过先进的DNA甲基化分析技术，科学评估宠物的生理年龄和健康状态，为爱宠制定个性化的健康管理方案。",
+      "features": {
+        "proprietaryTech": {
+          "title": "专有技术突破",
+          "description": "独创的DNA甲基化分析算法，全球领先的检测精度"
+        },
+        "nonInvasive": {
+          "title": "非侵入性采样",
+          "description": "简单的口腔拭子采样，宠物无痛无压力"
+        },
+        "fastReport": {
+          "title": "快速出具报告",
+          "description": "7-10个工作日获得详细检测报告"
+        },
+        "accuracy": {
+          "title": "高精准度",
+          "description": "检测准确率高达95%以上"
+        },
+        "personalizedRecommendations": {
+          "title": "个性化建议",
+          "description": "基于检测结果提供专属健康管理方案"
+        }
+      },
+      "price": "¥1,999",
+      "cta": "了解更多"
+    },
+    "comingSoon": {
+      "title": "即将推出",
+      "subtitle": "更多创新产品正在研发中",
+      "tag": "即将推出",
+      "name": "宠物延寿药物",
+      "description": "基于AI技术研发的宠物延寿药物，正在临床前研究阶段，预计2025年进入临床试验。",
+      "features": [
+        {
+          "title": "AI驱动的药物设计"
+        },
+        {
+          "title": "跨物种转化技术"
+        },
+        {
+          "title": "个性化给药方案"
+        }
+      ],
+      "status": "研发中",
+      "cta": "敬请期待"
+    },
+    "philosophy": {
+      "title": "产品理念",
+      "description": "我们致力于通过科技创新，为宠物和人类提供安全、有效、个性化的健康解决方案。",
+      "principles": [
+        {
+          "title": "科技创新",
+          "description": "运用前沿AI技术和生物科学"
+        },
+        {
+          "title": "安全可靠",
+          "description": "严格的质量控制和安全性验证"
+        },
+        {
+          "title": "个性化服务",
+          "description": "为每个生命定制专属健康方案"
+        }
+      ]
+    }
+  },
+  "investors": {
+    "title": "投资者关系",
+    "subtitle": "透明、诚信、共赢",
+    "description": "我们致力于与投资者建立长期稳定的合作关系，通过透明的信息披露和规范的公司治理，实现企业价值和股东价值的共同增长。",
+    "announcements": {
+      "title": "港府公告",
+      "description": "查看我们在香港证券交易所发布的最新公告",
+      "coming": "后续更新"
+    },
+    "reports": {
+      "title": "年度报告",
+      "description": "下载我们的年度财务报告和可持续发展报告",
+      "coming": "后续更新"
+    },
+    "registration": {
+      "title": "公司注册信息",
+      "nameZh": "公司名称（中文）",
+      "nameEn": "公司名称（英文）",
+      "regNumber": "商业登记编号",
+      "regDate": "注册日期",
+      "companyType": "公司类型",
+      "status": "公司现状",
+      "link": "查看香港公司注册资料"
+    },
+    "contact": {
+      "title": "投资者联系",
+      "description": "如有任何投资相关咨询，请联系我们的投资者关系团队",
+      "emailLabel": "邮箱：",
+      "email": "coradou@pawmed.cn",
+      "addressLabel": "地址：",
+      "address": "深圳市福田区梅林街道北环大道6018号1栋5层502"
+    }
+  },
+  "blog": {
+    "title": "洞察与新闻",
+    "subtitle": "行业前沿动态与公司最新资讯",
+    "description": "关注宠物医疗行业发展趋势，分享公司最新研发进展和行业洞察。"
+  },
+  "news": {
+    "title": "洞察与新闻",
+    "subtitle": "了解爪子制药的最新动态和行业资讯",
+    "latest": {
+      "title": "最新动态",
+      "items": [
+        {
+          "date": "2024年11月30日",
+          "category": "行业活动",
+          "title": "逆龄，再生 | 抗衰老新药学术研讨暨转化沙龙圆满落幕",
+          "summary": "爪子制药CEO赵思邈博士受邀参加抗衰老新药学术研讨会，从AI大数据学习的技术维度，介绍了在抗衰老药物研发领域的创新成果。"
+        },
+        {
+          "date": "2024年5月29日",
+          "category": "获奖荣誉",
+          "title": "爪子制药荣获国际创客大赛英国赛区优胜奖",
+          "summary": "在伦敦举行的国际创客大赛英国赛区决赛中，爪子制药从80余个创新创业项目中脱颖而出，成功获得优胜奖。"
+        },
+        {
+          "date": "2024年12月",
+          "category": "产品发布",
+          "title": "🐾 宠物DNA甲基化衰老检测试剂盒正式发布",
+          "summary": "我们自豪地分享来自使命核心的里程碑：推出宠物DNA甲基化衰老检测试剂盒。「爪子制药——让爱活得更久」。首次让宠物家长能够获得基于科学而非猜测的生理年龄洞察。我们正在应用AI和分子生物学的力量，帮助宠物不仅活得更久，更活得更好。"
+        }
+      ],
+      "cta": "查看更多",
+      "readMore": "阅读更多"
+    },
+    "extraNews": [
+      {
+        "category": "技术突破",
+        "date": "2024年10月15日",
+        "title": "AI驱动的药物筛选平台获得重大突破",
+        "summary": "我们的AI药物筛选平台在识别潜在抗衰老化合物方面取得了重大突破，筛选效率提升了300%，为后续的药物开发奠定了坚实基础。"
+      },
+      {
+        "category": "合作伙伴",
+        "date": "2024年9月20日",
+        "title": "与知名兽医医院建立战略合作关系",
+        "summary": "爪子制药与多家知名兽医医院签署战略合作协议，共同推进宠物健康管理创新，为更多宠物家庭提供科学化的健康服务。"
+      },
+      {
+        "category": "研究成果",
+        "date": "2024年8月10日",
+        "title": "发表重要研究论文：跨物种衰老机制研究",
+        "summary": "我们的研究团队在《Nature Aging》期刊发表重要论文，揭示了人类与宠物在衰老机制上的相似性，为跨物种药物开发提供了理论基础。"
+      }
+    ],
+    "insights": {
+      "title": "行业洞察",
+      "items": [
+        {
+          "date": "2024年12月",
+          "category": "技术分析",
+          "title": "AI在药物研发中的应用前景",
+          "summary": "探讨人工智能技术如何改变传统药物研发模式，提高研发效率和成功率。"
+        },
+        {
+          "date": "2024年11月",
+          "category": "市场趋势",
+          "title": "宠物医疗市场发展趋势",
+          "summary": "分析全球宠物医疗市场的发展趋势和投资机会。"
+        }
+      ],
+      "cta": "查看更多"
+    },
+    "media": {
+      "title": "媒体报道",
+      "items": [
+        {
+          "date": "2024年12月",
+          "source": "搜狐",
+          "title": "宠物DNA甲基化衰老检测试剂盒正式发布",
+          "summary": "爪子制药推出宠物DNA甲基化衰老检测试剂盒，首次让宠物家长能够获得基于科学的生理年龄洞察。"
+        },
+        {
+          "date": "2024年5月",
+          "source": "中国日报",
+          "title": "爪子制药荣获国际创客大赛优胜奖",
+          "summary": "在伦敦举行的国际创客大赛英国赛区决赛中，爪子制药成功获得优胜奖。"
+        }
+      ],
+      "cta": "查看更多"
+    },
+    "subscribe": {
+      "title": "订阅新闻",
+      "description": "及时获取爪子制药的最新动态和行业资讯",
+      "placeholder": "输入您的邮箱地址",
+      "button": "订阅"
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "期待与您的合作",
+    "description": "如果您对我们的技术、产品或者投资机会感兴趣，欢迎随时联系我们。",
+    "form": {
+      "title": "发送消息",
+      "name": "姓名",
+      "email": "邮箱",
+      "company": "公司",
+      "message": "留言",
+      "submit": "发送",
+      "submitting": "发送中...",
+      "successMessage": "感谢您的留言，我们会尽快回复！",
+      "errorMessage": "发送失败，请稍后重试",
+      "networkError": "网络错误，请稍后重试",
+      "placeholder": {
+        "name": "请输入您的姓名",
+        "email": "请输入您的邮箱",
+        "company": "请输入您的公司名称（可选）",
+        "message": "请输入您的留言内容"
+      },
+      "attachments": {
+        "title": "附件上传",
+        "description": "支持PDF、Word、PPT格式，最大10MB",
+        "selectFiles": "点击选择文件或拖拽文件到此处",
+        "supportedFormats": "支持PDF、Word、PPT格式",
+        "selectedFiles": "已选择的文件：",
+        "fileSizeFormat": " MB",
+        "validationError": "只支持PDF、Word、PPT格式文件，且文件大小不超过10MB"
+      }
+    },
+    "info": {
+      "title": "联系方式",
+      "address": {
+        "title": "地址",
+        "company": "中国香港爪子製藥有限公司",
+        "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+      },
+      "addressValue": "中国香港爪子製藥有限公司\nFLAT E19, 10/F, NO.52 HUNG TO ROAD,\nKWUN TONG, HONG KONG",
+      "email": {
+        "title": "邮箱",
+        "value": "coradou@pawmed.cn"
+      },
+      "phone": {
+        "title": "电话",
+        "value": "+44 07762480000"
+      }
+    },
+    "hours": {
+      "title": "工作时间",
+      "schedule": [
+        {
+          "days": "周一至周五",
+          "time": "9:00 - 18:00"
+        },
+        {
+          "days": "周六",
+          "time": "10:00 - 16:00"
+        },
+        {
+          "days": "周日",
+          "time": "休息"
+        }
+      ]
+    },
+    "social": {
+      "title": "关注我们",
+      "platforms": [
+        {
+          "name": "LinkedIn",
+          "url": "https://www.linkedin.com/company/paw-therapeutics",
+          "icon": "💼"
+        },
+        {
+          "name": "小红书",
+          "url": "#",
+          "icon": "📖"
+        }
+      ]
+    },
+    "business": {
+      "title": "商务合作",
+      "description": "如果您对我们的产品或服务感兴趣，欢迎与我们联系洽谈合作事宜。我们期待与您携手，共同推动宠物健康事业的发展。",
+      "email": "商务合作邮箱：coradou@pawmed.cn"
+    }
+  },
+  "footer": {
+    "company": {
+      "name": "爪子制药",
+      "description": "AI驱动的跨物种延寿药物发现平台"
+    },
+    "sections": {
+      "company": "公司",
+      "products": "产品与服务",
+      "resources": "资源与支持"
+    },
+    "links": {
+      "company": "公司",
+      "about": "关于我们",
+      "team": "核心团队",
+      "pipeline": "研发管线",
+      "careers": "加入我们",
+      "products": "产品与服务",
+      "investors": "投资者关系",
+      "news": "洞察与新闻",
+      "contact": "联系我们",
+      "awards": "获奖情况"
+    },
+    "legal": {
+      "privacy": "隐私政策",
+      "terms": "使用条款",
+      "cookies": "Cookie政策"
+    },
+    "copyright": "© 2024 爪子制药。保留所有权利。",
+    "careers": {
+      "title": "加入我们",
+      "pawCareers": "Paw Careers",
+      "campusRecruitment": "校园招聘",
+      "globalRecruitment": "全球招聘"
+    },
+    "quickNavigation": "快捷导航"
+  },
+  "awards": {
+    "title": "获奖情况",
+    "page": {
+      "title": "发展历程",
+      "subtitle": "见证爪子制药从创立到发展的每一个重要时刻",
+      "milestones": {
+        "title": "成长里程碑",
+        "subtitle": "跟随我们的足迹，了解每一个重要发展阶段",
+        "items": [
+          {
+            "title": "公司成立",
+            "description": "爪子制药正式成立，专注于AI驱动的跨物种延寿药物发现平台的研发与应用。"
+          },
+          {
+            "title": "核心技术架构完成",
+            "description": "成功完成AI驱动的跨物种延寿药物发现平台的核心技术架构设计与开发。"
+          },
+          {
+            "title": "产品原型开发",
+            "description": "宠物DNA甲基化衰老检测技术原型完成，为宠物健康管理提供科学依据。"
+          },
+          {
+            "title": "深圳研发中心设立",
+            "description": "在深圳建立研发中心，汇聚顶尖人才，推动跨物种延寿药物研发进程。"
+          },
+          {
+            "title": "技术团队扩充",
+            "description": "聚集了来自全球的顶尖科学家和工程师，构建了一支专业的跨学科研发团队。"
+          },
+          {
+            "title": "网站平台上线",
+            "description": "官方网站正式上线，为用户提供全方位的产品信息和服务支持。"
+          }
+        ]
+      },
+      "awardsGallery": {
+        "title": "获奖精彩瞬间",
+        "subtitle": "记录我们在各大创业比赛中的荣耀时刻",
+        "awards": {
+          "oxford": "牛津创业比赛获奖",
+          "cambridge": "剑桥创英杯大赛获奖",
+          "zhangjiang": "张江首届创赛明珠杯颁奖仪式",
+          "roche": "罗氏-HDRUK AI制药英国赛区冠军"
+        }
+      },
+      "future": {
+        "title": "展望未来",
+        "subtitle": "我们将继续在AI驱动的跨物种延寿药物发现领域深耕，为宠物和人类的健康长寿贡献力量"
+      }
+    }
+  },
+  "teamMembers": {
+    "zhaosimiao": {
+      "name": "赵思邈",
+      "role": "CEO", 
+      "description": "牛津大学人工智能医学博士研究员<br/>罗氏AI制药2024英国冠军<br/>Longevity Biotech Fellowship唯一中国成员"
+    },
+    "zengjingkun": {
+      "name": "曾京昆",
+      "role": "CTO",
+      "description": "UC Berkeley博士后研究员<br/>师从诺奖得主Jennifer Doudna<br/>《细胞》期刊第一作者"
+    },
+    "zhangying": {
+      "name": "张影", 
+      "role": "CSO",
+      "description": "中山大学博士生导师<br/>粒影生物创始人(超亿元融资)<br/>深圳\"孔雀计划\"二级人才"
+    },
+    "douqianyu": {
+      "name": "窦倩玉",
+      "role": "CFO",
+      "description": "牛津大学金融经济硕士<br/>参与A股生物医药IPO<br/>牛津Alpha基金宠物医疗投资分析师<br/>腾讯伦敦战略分析经验"
+    },
+    "shenjiashu": {
+      "name": "申嘉澍",
+      "role": "COO", 
+      "description": "牛津大学临床医学博士<br/>参与阿斯利康IL-6药物研发<br/>前PetPlusU市场负责人"
+    },
+    "lihangpeng": {
+      "name": "李杭蓬",
+      "role": "CIO",
+      "description": "牛津大学医学博士生<br/>《Nature Protocols》第一作者<br/>参与辉瑞与强生AI模型研发"
+    }
+  },
+  "missionStatement": {
+    "text": "专注研发<span class=\"text-paw-primary font-semibold\">动物</span>和<span class=\"text-paw-primary font-semibold\">人类</span>需求的<span class=\"text-paw-primary font-semibold\">First-in-Class</span>创新药，<br/>立志为全球动物和人类提供安全高效的<span class=\"text-paw-primary font-semibold\">延寿</span>药物，<br/>用科学点亮希望，延续温暖陪伴，<br/>成为全球生物医药业引领者。"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "message": "抱歉，您访问的页面不存在或已被移除。",
+    "backHome": "返回首页",
+    "contactUs": "联系我们",
+    "funMessage": "我们的AI宠物正在努力寻找这个页面... 🐾"
+  },
+  "legal": {
+    "privacyPolicy": {
+      "title": "隐私政策",
+      "lastUpdated": "最后更新：2024年12月",
+      "sections": {
+        "informationCollection": {
+          "title": "1. 信息收集",
+          "content": "爪子制药（以下简称\"我们\"）致力于保护您的隐私。我们收集的信息包括：",
+          "items": [
+            "联系信息：姓名、邮箱地址、电话号码",
+            "公司信息：公司名称、职位、行业",
+            "技术信息：IP地址、浏览器类型、访问时间",
+            "使用数据：网站访问记录、页面浏览情况"
+          ]
+        },
+        "informationUsage": {
+          "title": "2. 信息使用",
+          "content": "我们使用收集的信息用于：",
+          "items": [
+            "提供和改进我们的产品和服务",
+            "与您沟通，包括回复咨询和发送更新",
+            "分析网站使用情况，优化用户体验",
+            "遵守法律法规要求",
+            "保护我们的合法权益"
+          ]
+        },
+        "informationSharing": {
+          "title": "信息共享",
+          "content": "我们不会出售、出租或交易您的个人信息。在以下情况下，我们可能会共享您的信息：",
+          "items": [
+            "获得您的明确同意",
+            "与我们的服务提供商合作（如云存储、分析工具）",
+            "遵守法律法规或政府要求",
+            "保护我们的合法权益或安全"
+          ]
+        },
+        "contact": {
+          "title": "11. 联系我们",
+          "content": "如果您对本隐私政策有任何疑问或需要行使您的权利，请通过以下方式联系我们：",
+          "email": "邮箱：privacy@pawmed.cn",
+          "address": "地址：中国香港爪子製藥有限公司",
+          "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+        }
+      }
+    },
+    "termsOfService": {
+      "title": "使用条款",
+      "lastUpdated": "最后更新：2024年12月",
+      "sections": {
+        "acceptance": {
+          "title": "1. 接受条款",
+          "content": "欢迎访问爪子制药官方网站。通过访问和使用本网站，您同意遵守这些使用条款。如果您不同意这些条款，请停止使用本网站。"
+        },
+        "websiteUsage": {
+          "title": "2. 网站使用",
+          "content": "您可以使用本网站用于以下合法目的：",
+          "items": [
+            "了解我们的公司、产品和服务",
+            "获取技术信息和行业资讯",
+            "与我们联系和沟通",
+            "申请职位或合作机会"
+          ],
+          "restriction": "您不得将本网站用于任何非法、有害或不当目的。"
+        },
+        "contact": {
+          "title": "12. 联系我们",
+          "content": "如果您对这些使用条款有任何疑问，请通过以下方式联系我们：",
+          "email": "邮箱：legal@pawmed.cn",
+          "address": "地址：中国香港爪子製藥有限公司",
+          "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+        }
+      }
+    }
+  },
+  "validation": {
+    "messageRequired": "留言不能为空"
+  },
+  "ui": {
+    "close": "关闭"
+  },
+  "metadata": {
+    "title": "爪子制药 | AI驱动的跨物种延寿药物发现平台",
+    "description": "利用人工智能技术，加速宠物和人类的抗衰老药物研发，让每一个生命都能享受更长久、更健康的陪伴。",
+    "keywords": ["爪子制药", "PAW Therapeutics", "AI制药", "宠物延寿", "抗衰老药物", "甲基化检测"],
+    "siteName": "爪子制药",
+    "ogDescription": "利用人工智能技术，加速宠物和人类的抗衰老药物研发"
+  },
+  "timeline": {
+    "label": "时间线："
+  },
+  "academic": {
+    "support": "学术支持"
+  },
+  "milestones": {
+    "title": "成就里程碑",
+    "subtitle": "记录我们在AI驱动跨物种延寿药物发现领域的发展历程",
+    "luluClimbing": "可爱的lulu爬树",
+    "corporateMilestones": "企业里程碑",
+    "technologyBreakthrough": "技术突破",
+    "productDevelopment": "产品研发",
+    "teamBuilding": "团队建设",
+    "talentDevelopment": "人才发展",
+    "brandBuilding": "品牌建设",
+    "company": {
+      "2024": {
+        "founding": {
+          "title": "公司成立",
+          "description": "爪子制药正式成立，专注于AI驱动的跨物种延寿药物发现平台的研发与应用。"
+        }
+      }
+    },
+    "technology": {
+      "2024": {
+        "breakthrough": {
+          "title": "核心技术架构完成",
+          "description": "成功完成AI驱动的跨物种延寿药物发现平台的核心技术架构设计与开发。"
+        }
+      }
+    },
+    "product": {
+      "2024": {
+        "prototype": {
+          "title": "产品原型开发",
+          "description": "宠物DNA甲基化衰老检测技术原型完成，为宠物健康管理提供科学依据。"
+        }
+      }
+    },
+    "team": {
+      "2024": {
+        "shenzhenRD": {
+          "title": "深圳研发中心设立",
+          "description": "在深圳建立研发中心，汇聚顶尖人才，推动跨物种延寿药物研发进程。"
+        },
+        "teamExpansion": {
+          "title": "技术团队扩充",
+          "description": "成功招募生物信息学、药物化学、产品管理等领域的专业人才。"
+        }
+      }
+    },
+    "brand": {
+      "2024": {
+        "website": {
+          "title": "网站平台上线",
+          "description": "公司官方网站成功上线，展示我们的技术实力和发展愿景。"
+        }
+      }
+    },
+    "developmentData": {
+      "title": "发展数据",
+      "subtitle": "持续创新，踏实前行",
+      "milestones": "重要里程碑",
+      "teams": "专业团队",
+      "innovation": "创新专注度"
+    },
+    "lulu": {
+      "title": "我们的吉祥物 - lulu",
+      "description": "就像lulu勇敢地爬树探索新高度一样，我们也在科技的高峰上不断攀登！",
+      "qualities": {
+        "climbing": "勇于攀登",
+        "focused": "目标明确",
+        "loving": "热爱生命",
+        "innovative": "勇于创新"
+      },
+      "quote": "\"lulu的攀爬精神激励着我们每一位爪子制药的成员，为每个生命带来更多可能性和希望！\""
+    },
+    "future": {
+      "title": "未来展望",
+      "description": "我们将继续在AI驱动的跨物种延寿药物发现领域深耕，为宠物健康事业贡献更多力量"
+    }
+  },
+  "careers": {
+    "title": "加入我们",
+    "subtitle": "与我们一起改变宠物健康的未来",
+    "culture": {
+      "title": "我们的文化",
+      "description": "爪子制药致力于创造一个激励创新、包容多样性和追求卓越的工作环境。我们相信每个团队成员都有无限的潜力，共同推动跨物种延寿药物发现的突破。",
+      "innovation": {
+        "title": "创新驱动",
+        "description": "鼓励创新思维，勇于探索前沿技术，推动科学发现的边界"
+      },
+      "collaboration": {
+        "title": "协作共赢",
+        "description": "倡导团队合作，跨部门协作，共同实现公司使命"
+      },
+      "excellence": {
+        "title": "追求卓越",
+        "description": "以高标准要求自己，持续改进，追求工作和产品的卓越"
+      }
+    },
+    "petFriendly": {
+      "title": "我们爱宠物，更爱人才！",
+      "subtitle": "在爪子制药，每天都能感受到对生命的热爱",
+      "catColleagues": "陪伴你工作的猫咪同事",
+      "dogFriends": "治愈系的汪星人朋友",
+      "everyPawprint": "每一个小脚印都是爱",
+      "connectingLove": "用爱连接科学与生命",
+      "petFriendlyOffice": "宠物友好办公环境",
+      "welcomePets": "我们欢迎员工带着自己的毛孩子一起工作，创造温馨有爱的办公氛围"
+    },
+    "office": {
+      "title": "办公环境",
+      "subtitle": "现代化办公空间，激发创新灵感",
+      "space1": {
+        "title": "现代化办公空间",
+        "description": "舒适的现代化办公环境，为团队提供高效的工作氛围"
+      },
+      "space2": {
+        "title": "协作办公区域",
+        "description": "开放式协作空间，促进团队交流和创新思维"
+      },
+      "space3": {
+        "title": "专业办公环境",
+        "description": "专业的办公环境，为技术研发和创新工作提供完美支撑"
+      },
+      "location": {
+        "title": "办公地址",
+        "description": "位于深圳南山区科技园，毗邻知名科技企业，创新氛围浓厚",
+        "transportation": {
+          "title": "交通便利",
+          "description": "地铁1号线直达，多条公交线路覆盖"
+        },
+        "facilities": {
+          "title": "配套完善",
+          "description": "周边餐饮、购物中心、银行等配套设施一应俱全"
+        },
+        "environment": {
+          "title": "环境优美",
+          "description": "绿化覆盖率高，空气清新，舒适的工作环境"
+        }
+      }
+    },
+    "benefits": {
+      "title": "福利待遇",
+      "description": "我们提供全面的福利包，支持员工的工作和生活平衡",
+      "competitiveSalary": {
+        "title": "有竞争力的薪酬",
+        "description": "提供行业内具有竞争力的薪酬水平，并根据个人表现进行调整"
+      },
+      "equityIncentives": {
+        "title": "股权激励",
+        "description": "为核心员工提供股权激励，与公司共同成长"
+      },
+      "learningDevelopment": {
+        "title": "学习发展",
+        "description": "完善的培训体系，支持员工持续学习和职业发展"
+      },
+      "flexibleWork": {
+        "title": "弹性工作",
+        "description": "灵活的工作时间安排，支持远程办公"
+      },
+      "healthInsurance": {
+        "title": "健康保障",
+        "description": "完善的医疗保险和定期健康体检"
+      },
+      "innovativeEnvironment": {
+        "title": "创新环境",
+        "description": "鼓励创新思维，提供自由的工作环境"
+      }
+    },
+    "openPositions": {
+      "title": "开放职位",
+      "subtitle": "寻找优秀人才，共同推动跨物种延寿药物发现的创新",
+      "campusRecruitment": {
+        "title": "校园招聘",
+        "subtitle": "面向应届毕业生，提供完整的培训体系和职业发展通道",
+        "current": "2025春招进行中",
+        "freshGradPreferred": "应届生优先"
+      },
+      "globalRecruitment": {
+        "title": "全球招聘",
+        "subtitle": "面向全球有经验的专业人士，欢迎国际化人才加入我们",
+        "openYear": "全年开放申请",
+        "experiencePreferred": "经验优先"
+      },
+      "campusFeatures": {
+        "title": "校园招聘特色",
+        "comprehensiveTraining": {
+          "title": "全面培训",
+          "description": "6个月新员工培训计划"
+        },
+        "mentorSystem": {
+          "title": "导师制度",
+          "description": "一对一导师指导成长"
+        },
+        "fastPromotion": {
+          "title": "快速晋升",
+          "description": "优秀毕业生优先晋升"
+        }
+      },
+      "globalFeatures": {
+        "title": "全球招聘特色",
+        "internationalTeam": {
+          "title": "国际化团队",
+          "description": "多元文化工作环境"
+        },
+        "topSalary": {
+          "title": "顶级薪酬",
+          "description": "业内最具竞争力的薪酬"
+        },
+        "relocationSupport": {
+          "title": "安家支持",
+          "description": "住房津贴和签证支持"
+        }
+      },
+      "directApplication": {
+        "title": "没有找到合适的职位？",
+        "subtitle": "我们随时欢迎优秀人才的加入，请发送简历到我们的邮箱",
+        "sendResume": "发送简历",
+        "contactUs": "联系我们"
+      }
+    },
+    "explore": {
+      "title": "探索更多爪子制药",
+      "subtitle": "深入了解我们的技术、产品和成就历程",
+      "aboutUs": {
+        "title": "关于我们",
+        "description": "了解爪子制药的使命愿景与核心技术",
+        "button": "立即了解"
+      },
+      "researchPipeline": {
+        "title": "研发管线",
+        "description": "查看我们的创新药物研发项目进展",
+        "button": "查看项目"
+      },
+      "products": {
+        "title": "产品与服务",
+        "description": "探索我们的创新产品和解决方案",
+        "button": "查看产品"
+      },
+      "milestones": {
+        "title": "成就里程碑",
+        "description": "回顾我们的发展历程与重要时刻",
+        "button": "查看成就"
+      },
+      "investors": {
+        "title": "投资者关系",
+        "description": "了解投资机会和公司财务信息",
+        "button": "投资者信息"
+      },
+      "quickNav": {
+        "title": "快速导航",
+        "subtitle": "一键直达各个页面，快速了解爪子制药",
+        "home": "首页",
+        "coreTeam": "核心团队",
+        "insights": "洞察与新闻"
+      }
+    },
+    "buttons": {
+      "viewDetails": "查看详情"
+    },
+    "jobPositions": {
+      "seniorBioinformatics": {
+        "title": "高级生物信息学工程师",
+        "department": "研发部",
+        "type": "全职",
+        "location": "深圳",
+        "description": "负责AI驱动的跨物种延寿药物发现平台的算法开发和优化工作",
+        "requirements": {
+          "0": "生物信息学、计算生物学或相关专业硕士及以上学历",
+          "1": "3年以上生物信息学算法开发经验",
+          "2": "熟练掌握Python、R等编程语言",
+          "3": "具备机器学习和深度学习项目经验",
+          "4": "优秀的英文读写能力"
+        },
+        "responsibilities": {
+          "0": "开发和优化AI驱动的药物发现算法",
+          "1": "设计跨物种生物数据分析流程",
+          "2": "参与核心产品的技术架构设计",
+          "3": "与团队协作完成项目目标"
+        }
+      },
+      "drugChemistry": {
+        "title": "药物化学研究员",
+        "department": "研发部",
+        "type": "全职",
+        "location": "深圳",
+        "description": "主导药物化学研究，推动创新药物的发现和开发",
+        "requirements": {
+          "0": "有机化学、药物化学或相关专业博士学位",
+          "1": "5年以上药物化学研究经验",
+          "2": "熟悉药物设计和合成方法",
+          "3": "具备新药研发项目管理经验",
+          "4": "良好的团队协作能力"
+        },
+        "responsibilities": {
+          "0": "负责候选药物的设计和合成",
+          "1": "开展构效关系研究",
+          "2": "参与项目的整体规划和实施",
+          "3": "指导初级研究员的工作"
+        }
+      },
+      "productManager": {
+        "title": "产品经理",
+        "department": "产品部",
+        "type": "全职",
+        "location": "深圳",
+        "description": "负责产品的整体规划和市场推广，推动公司业务发展",
+        "requirements": {
+          "0": "生物医学、市场营销或相关专业本科及以上学历",
+          "1": "3年以上产品管理经验",
+          "2": "熟悉生物医药行业",
+          "3": "具备优秀的沟通协调能力",
+          "4": "有创业公司工作经验者优先"
+        },
+        "responsibilities": {
+          "0": "负责产品规划和市场策略制定",
+          "1": "协调研发、市场等部门工作",
+          "2": "跟踪行业趋势和竞争动态",
+          "3": "推动产品商业化进程"
+        }
+      },
+      "commonBenefits": {
+        "0": "有竞争力的薪酬包",
+        "1": "股权激励计划",
+        "2": "完善的培训体系",
+        "3": "弹性工作制度"
+      }
+    },
+    "jobModal": {
+      "description": "职位描述",
+      "responsibilities": "工作职责",
+      "requirements": "任职要求",
+      "benefits": "福利待遇"
+    },
+    "resumeForm": {
+      "title": "投递简历",
+      "name": "姓名",
+      "email": "邮箱",
+      "resume": "简历文件",
+      "message": "自我介绍",
+      "submit": "提交简历",
+      "submitting": "提交中...",
+      "success": "简历投递成功！",
+      "error": "提交失败，请稍后重试",
+      "successKeyword": "成功",
+      "networkKeyword": "网络",
+      "retry": "重试",
+      "fileSupport": "支持PDF、Word格式，文件大小不超过10MB",
+      "placeholders": {
+        "name": "请输入您的姓名",
+        "email": "请输入您的邮箱地址",
+        "message": "请简单介绍一下自己，或者说明为什么想要加入我们..."
+      },
+      "validation": {
+        "fileRequired": "请选择简历文件",
+        "fileTooLarge": "简历文件过大，请选择小于10MB的文件"
+      },
+      "timeout": "请求超时，请检查网络连接后重试",
+      "retrying": "网络错误，正在重试...",
+      "networkError": "网络连接失败，请检查您的网络连接后重试",
+      "tip": {
+        "label": "提示：",
+        "content": "提交后我们会通过邮箱和微信通知相关负责人，通常在1-3个工作日内回复。"
+      }
+    }
+  },
+  "company": {
+    "nameZhValue": "爪子製藥有限公司",
+    "typeValue": "私人股份有限公司",
+    "statusValue": "成立",
+    "addressLabel": "地址：",
+    "addressValue": "深圳市福田区梅林街道北环大道6018号1栋5层502"
+  }
+} 
