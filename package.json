@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze-images": "node scripts/optimize-images.js",
+    "compress-large": "node scripts/compress-large-images.js",
+    "perf-check": "node scripts/performance-check.js",
+    "build:analyze": "npm run build && npx @next/bundle-analyzer"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.0",

@@ -30,6 +30,7 @@ export interface ContactData {
   email: string;
   company?: string;
   message: string;
+  attachments?: string[]; // 附件文件名数组
   submittedAt: string;
   status: 'new' | 'read' | 'replied' | 'archived';
   notes?: string;

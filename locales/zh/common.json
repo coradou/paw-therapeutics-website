@@ -104,7 +104,7 @@
       "subtitle": "以负责任的方式推动科学进步，造福社会",
       "ethics": {
         "title": "科学伦理承诺",
-        "content": "严格遵守科学伦理，确保所有研究活动符合国际伦理标准"
+        "content": "严格遵守科学伦理，所有研究活动符合国际伦理标准"
       },
       "sustainability": {
         "title": "可持续发展",
@@ -339,7 +339,6 @@
       "name": "宠物衰老甲基化检测试剂盒",
       "tag": "专有技术",
       "title": "精准评估宠物生理年龄",
-      "subtitle": "🐾 全球首创",
       "description": "通过先进的DNA甲基化分析技术，科学评估宠物的生理年龄和健康状态，为爱宠制定个性化的健康管理方案。",
       "features": {
         "proprietaryTech": {
@@ -432,7 +431,9 @@
     "contact": {
       "title": "投资者联系",
       "description": "如有任何投资相关咨询，请联系我们的投资者关系团队",
+      "emailLabel": "邮箱：",
       "email": "coradou@pawmed.cn",
+      "addressLabel": "地址：",
       "address": "深圳市福田区梅林街道北环大道6018号1栋5层502"
     }
   },
@@ -552,6 +553,15 @@
         "email": "请输入您的邮箱",
         "company": "请输入您的公司名称（可选）",
         "message": "请输入您的留言内容"
+      },
+      "attachments": {
+        "title": "附件上传",
+        "description": "支持PDF、Word、PPT格式，最大10MB",
+        "selectFiles": "点击选择文件或拖拽文件到此处",
+        "supportedFormats": "支持PDF、Word、PPT格式",
+        "selectedFiles": "已选择的文件：",
+        "fileSizeFormat": " MB",
+        "validationError": "只支持PDF、Word、PPT格式文件，且文件大小不超过10MB"
       }
     },
     "info": {

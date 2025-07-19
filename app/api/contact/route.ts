@@ -1,11 +1,17 @@
 import { NextResponse } from 'next/server'
 import sgMail from '@sendgrid/mail'
 import { saveContact } from '@/lib/storage'
+import { writeFile, mkdir } from 'fs/promises'
+import { join } from 'path'
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json()
-    const { name, email, company, message } = body
+    const formData = await request.formData()
+    const name = formData.get('name') as string
+    const email = formData.get('email') as string
+    const company = formData.get('company') as string
+    const message = formData.get('message') as string
+    const files = formData.getAll('files') as File[]
 
     // 验证必填字段
     if (!name || !email || !message) {
@@ -24,13 +30,45 @@ export async function POST(request: Request) {
       )
     }
 
+    // 处理文件上传
+    const uploadedFileNames: string[] = []
+    if (files && files.length > 0) {
+      try {
+        // 确保上传目录存在
+        const uploadDir = join(process.cwd(), 'data', 'contact-uploads')
+        await mkdir(uploadDir, { recursive: true })
+
+        for (const file of files) {
+          if (file.size > 0) {
+            // 生成唯一文件名
+            const timestamp = Date.now()
+            const random = Math.random().toString(36).substring(2, 8)
+            const fileExtension = file.name.split('.').pop()
+            const uniqueFileName = `${timestamp}_${random}.${fileExtension}`
+            
+            // 保存文件
+            const filePath = join(uploadDir, uniqueFileName)
+            const bytes = await file.arrayBuffer()
+            const buffer = Buffer.from(bytes)
+            await writeFile(filePath, buffer)
+            
+            uploadedFileNames.push(uniqueFileName)
+          }
+        }
+      } catch (fileError) {
+        console.error('文件上传失败:', fileError)
+        // 文件上传失败不影响联系信息提交
+      }
+    }
+
     // 保存联系信息到本地存储（主要功能）
     try {
       await saveContact({
         name,
         email,
         company,
-        message
+        message,
+        attachments: uploadedFileNames
       });
       console.log('联系信息已保存到后台');
     } catch (storageError) {
@@ -51,6 +89,10 @@ export async function POST(request: Request) {
         const toEmail = 'coradou@pawmed.cn'
         const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'no-reply@pawmed.cn'
 
+        const attachmentsList = uploadedFileNames.length > 0 
+          ? `<p><strong>附件 (${uploadedFileNames.length}个):</strong> ${uploadedFileNames.join(', ')}</p>`
+          : ''
+
         const msg = {
           to: toEmail,
           from: {
@@ -65,6 +107,7 @@ export async function POST(request: Request) {
               <p><strong>姓名:</strong> ${name}</p>
               <p><strong>邮箱:</strong> <a href="mailto:${email}">${email}</a></p>
               <p><strong>公司:</strong> ${company || '未提供'}</p>
+              ${attachmentsList}
               <hr style="border: none; border-top: 1px solid #eee;" />
               <p><strong>留言:</strong></p>
               <p style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;">${message}</p>
@@ -86,10 +129,15 @@ export async function POST(request: Request) {
     }
 
     // 返回成功响应（联系信息已保存）
+    const successMessage = uploadedFileNames.length > 0 
+      ? `感谢您的留言，我们会尽快回复！已成功上传 ${uploadedFileNames.length} 个附件。`
+      : '感谢您的留言，我们会尽快回复！'
+
     return NextResponse.json(
       { 
-        message: '感谢您的留言，我们会尽快回复！',
-        emailSent: emailSent
+        message: successMessage,
+        emailSent: emailSent,
+        attachmentsUploaded: uploadedFileNames.length
       },
       { status: 200 }
     )

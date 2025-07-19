@@ -24,7 +24,7 @@
     "description": "PAW Therapeutics is dedicated to accelerating anti-aging drug development for pets and humans through AI technology, enabling every life to enjoy longer, healthier companionship.",
     "primary": "Learn More",
     "secondary": "Contact Us",
-    "bottomText": "Guarding every beautiful moment of life"
+    "bottomText": "Protecting every beautiful moment of life"
   },
   "stats": {
     "title": "Data-Driven Innovation",
@@ -391,7 +391,7 @@
     "imagePlaceholder": "Please upload product image",
     "methylationKit": {
       "name": "Pet Aging Methylation Test Kit",
-      "tag": "🐾 World's First",
+      "tag": "Proprietary Technology",
       "subtitle": "Precisely assess pet's biological age",
       "title": "Proprietary Technology",
       "description": "Using our proprietary technology and advanced DNA methylation analysis technology, scientifically assess your pet's biological age and health status, and develop personalized health management plans for your beloved pet.",
@@ -486,7 +486,9 @@
     "contact": {
       "title": "Investor Contact",
       "description": "For any investment-related inquiries, please contact our investor relations team",
+      "emailLabel": "Email: ",
       "email": "coradou@pawmed.cn",
+      "addressLabel": "Address: ",
       "address": "Room 502, 5th Floor, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen"
     },
     "highlights": {
@@ -1226,6 +1228,15 @@
         "email": "Please enter your email",
         "company": "Please enter your company name (optional)",
         "message": "Please enter your message"
+      },
+      "attachments": {
+        "title": "File Upload",
+        "description": "Supports PDF, Word, PPT formats, max 10MB",
+        "selectFiles": "Click to select files or drag files here",
+        "supportedFormats": "Supports PDF, Word, PPT formats",
+        "selectedFiles": "Selected files:",
+        "fileSizeFormat": " MB",
+        "validationError": "Only PDF, Word, PPT format files are supported, with file size not exceeding 10MB"
       }
     },
     "info": {

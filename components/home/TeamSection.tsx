@@ -75,7 +75,7 @@ export default function TeamSection() {
                 <div className="glass-card p-4 hover:scale-105 transition-all duration-300 text-center group h-full">
                   <div>
                     <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-full mx-auto mb-3 overflow-hidden ring-2 ring-white shadow-lg group-hover:ring-4 group-hover:ring-paw-primary/30 transition-all">
-                      <img src={member.image} alt={memberData.name} className="w-full h-full object-cover"/>
+                      <Image src={member.image} alt={memberData.name} width={112} height={112} className="w-full h-full object-cover"/>
                     </div>
                     <h3 className="text-lg font-bold text-paw-dark">{memberData.name}</h3>
                     <p className="text-sm text-paw-primary font-semibold">{memberData.role}</p>

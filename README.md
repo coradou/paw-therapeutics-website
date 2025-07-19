@@ -1,3 +1,34 @@
+# Paw Therapeutics Website
+
+## 快速开始
+
+这是一个轻量版本的项目，已删除依赖文件以便传输。
+
+### 1. 安装依赖
+
+```bash
+npm install
+```
+
+### 2. 启动开发服务器
+
+```bash
+npm run dev
+```
+
+### 3. 访问网站
+
+打开浏览器访问 http://localhost:3000
+
+### 4. 构建生产版本
+
+```bash
+npm run build
+npm start
+```
+
+---
+
 # Paw Therapeutics 网站
 
 爪爪医疗官方网站，展示公司业务、产品、团队等信息。

@@ -121,10 +121,10 @@ export default function InvestorsSection() {
               <p className="text-xl mb-8 opacity-90">{t.investors.contact.description}</p>
               <div className="grid md:grid-cols-2 gap-6 text-lg">
                 <ScrollAnimatedElement animation="fade-up" delay={400}>
-                  <div>邮箱：{t.investors.contact.email}</div>
+                  <div>{t.investors.contact.emailLabel}{t.investors.contact.email}</div>
                 </ScrollAnimatedElement>
                 <ScrollAnimatedElement animation="fade-up" delay={450}>
-                  <div>地址：{t.investors.contact.address}</div>
+                  <div>{t.investors.contact.addressLabel}{t.investors.contact.address}</div>
                 </ScrollAnimatedElement>
               </div>
             </div>

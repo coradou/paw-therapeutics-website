@@ -23,7 +23,7 @@ export default function HeroSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 order-2 md:order-1">
+          <div className="space-y-6 order-1 md:order-1">
             <ScrollAnimatedElement animation="fade-up" delay={0}>
             <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-paw-primary/10 to-paw-accent/10 px-4 py-2 rounded-full">
               <div className="w-2 h-2 bg-paw-primary rounded-full animate-pulse"></div>
@@ -82,7 +82,7 @@ export default function HeroSection() {
             </div>
           </div>
           
-          <ScrollAnimatedElement animation="blur" delay={300} className="relative order-1 md:order-2">
+          <ScrollAnimatedElement animation="blur" delay={300} className="relative order-2 md:order-2">
             <div className="relative">
               {/* 3D卡片效果 */}
               <div className="absolute inset-0 bg-gradient-to-br from-paw-primary to-paw-deep rounded-3xl transform rotate-6 opacity-20"></div>
@@ -137,8 +137,8 @@ export default function HeroSection() {
               </div>
             </div>
             <ScrollAnimatedElement animation="fade-up" delay={1200}>
-            <p className="text-center mt-6 text-lg font-light text-paw-dark/80">
-              <span className="text-paw-primary font-semibold">守护</span>每一个生命的美好时光
+            <p className="text-center mt-6 text-lg font-medium text-paw-primary/90">
+              {t.hero.bottomText}
             </p>
             </ScrollAnimatedElement>
           </ScrollAnimatedElement>

@@ -183,7 +183,7 @@ export default function CareersPage() {
         setCurrentSessionId(data.sessionId);
         const welcomeMessage = {
           role: 'assistant' as const,
-          content: data.message || `您好！欢迎参加${jobTitle}职位的AI面试。请点击下方的"开始录音"按钮，用语音回答我的问题。准备好了就开始吧！`,
+          content: data.message || `您好！欢迎参加${jobTitle}职位的AI面试。请点击下方的&ldquo;开始录音&rdquo;按钮，用语音回答我的问题。准备好了就开始吧！`,
           timestamp: new Date()
         };
         setConversationHistory([welcomeMessage]);
@@ -1221,9 +1221,7 @@ ${evaluationData.summary.weaknesses.map((s: string) => `• ${s}`).join('\n')}
                   )}
                 </button>
                 
-                <div className="flex-1 text-center">
-                  <div className="text-sm text-gray-600">或者</div>
-                </div>
+
               </div>
               
               {/* AI 面试界面 */}
@@ -1310,7 +1308,7 @@ ${evaluationData.summary.weaknesses.map((s: string) => `• ${s}`).join('\n')}
                   </div>
                   
                   <div className="mt-2 text-center text-sm text-gray-600">
-                    💡 提示：点击"开始录音"按钮进行语音回答
+                    💡 提示：点击&ldquo;开始录音&rdquo;按钮进行语音回答
                   </div>
                 </div>
               )}

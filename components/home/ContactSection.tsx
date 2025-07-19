@@ -16,18 +16,55 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const files = Array.from(e.target.files)
+      const validFiles = files.filter(file => {
+        const validTypes = [
+          'application/pdf',
+          'application/msword',
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+          'application/vnd.ms-powerpoint',
+          'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+        ]
+        return validTypes.includes(file.type) && file.size <= 10 * 1024 * 1024 // 10MB限制
+      })
+      
+      if (validFiles.length !== files.length) {
+        setSubmitStatus('error');
+        setSubmitMessage(t.contact?.form?.attachments?.validationError || '只支持PDF、Word、PPT格式文件，且文件大小不超过10MB');
+        return
+      }
+      
+      setUploadedFiles(prev => [...prev, ...validFiles])
+    }
+  }
+
+  const removeFile = (index: number) => {
+    setUploadedFiles(prev => prev.filter((_, i) => i !== index))
+  }
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
+      const formDataWithFiles = new FormData()
+      formDataWithFiles.append('name', data.name)
+      formDataWithFiles.append('email', data.email)
+      formDataWithFiles.append('company', data.company || '')
+      formDataWithFiles.append('message', data.message)
+      
+      // 添加文件
+      uploadedFiles.forEach((file) => {
+        formDataWithFiles.append('files', file)
+      })
+
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        body: formDataWithFiles,
       });
 
       const result = await response.json();
@@ -36,6 +73,7 @@ export default function ContactSection() {
         setSubmitStatus('success');
         setSubmitMessage(result.message);
         reset();
+        setUploadedFiles([]);
       } else {
         setSubmitStatus('error');
         setSubmitMessage(result.error || '发送失败，请稍后重试');
@@ -119,6 +157,71 @@ export default function ContactSection() {
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${errors.message ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-paw-primary'}`}
                     ></textarea>
                     {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
+                  </div>
+                </ScrollAnimatedElement>
+
+                {/* 文件上传 */}
+                <ScrollAnimatedElement animation="fade-up" delay={375}>
+                  <div>
+                    <label className="block text-sm font-medium text-paw-dark mb-2">
+                      {t.contact?.form?.attachments?.title || '附件上传'} ({t.contact?.form?.attachments?.description || '支持PDF、Word、PPT格式，最大10MB'})
+                    </label>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-paw-primary transition-colors">
+                      <input
+                        type="file"
+                        multiple
+                        accept=".pdf,.doc,.docx,.ppt,.pptx"
+                        onChange={handleFileChange}
+                        className="hidden"
+                        id="file-upload-home"
+                      />
+                      <label htmlFor="file-upload-home" className="cursor-pointer">
+                        <div className="flex flex-col items-center">
+                          <svg className="w-12 h-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                          </svg>
+                          <p className="text-sm text-gray-600 mb-1">
+                            {t.contact?.form?.attachments?.selectFiles || '点击选择文件或拖拽文件到此处'}
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            {t.contact?.form?.attachments?.supportedFormats || '支持PDF、Word、PPT格式'}
+                          </p>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    {/* 显示已选择的文件 */}
+                    {uploadedFiles.length > 0 && (
+                      <div className="mt-3">
+                        <p className="text-sm font-medium text-gray-700 mb-2">
+                          {t.contact?.form?.attachments?.selectedFiles || '已选择的文件：'}
+                        </p>
+                        <div className="space-y-2">
+                          {uploadedFiles.map((file, index) => (
+                            <div key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded-lg">
+                              <div className="flex items-center space-x-2">
+                                <svg className="w-4 h-4 text-paw-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                <span className="text-sm text-gray-700">{file.name}</span>
+                                <span className="text-xs text-gray-500">
+                                  ({(file.size / 1024 / 1024).toFixed(2)}{t.contact?.form?.attachments?.fileSizeFormat || ' MB'})
+                                </span>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => removeFile(index)}
+                                className="text-red-500 hover:text-red-700"
+                              >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </ScrollAnimatedElement>
                 

@@ -33,11 +33,7 @@ export default function Products() {
                 <h2 className="text-3xl md:text-4xl font-bold text-paw-primary">
                   {t.products.methylationKit.name}
                 </h2>
-                <div className="inline-block bg-gradient-to-r from-paw-light to-paw-light/50 border-2 border-paw-primary/20 rounded-xl px-4 py-2 mt-2 ml-8 shadow-md transform hover:scale-105 transition-all duration-300">
-                  <div className="text-base font-semibold text-paw-primary flex items-center gap-1">
-                    {t.products.methylationKit.subtitle}
-                  </div>
-                </div>
+
               </div>
               
               <div className="grid md:grid-cols-2 gap-12 items-center">

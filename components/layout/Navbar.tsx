@@ -80,12 +80,12 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 ml-4">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8 ml-4 flex-1 justify-center">
             {navItems.map((item, index) => (
               <Link
                 key={item.key}
                 href={item.href}
-                className={`font-medium transition-all duration-300 focus:outline-none transform hover:scale-110 whitespace-nowrap text-sm lg:text-base ${
+                className={`font-medium transition-all duration-300 focus:outline-none transform hover:scale-110 whitespace-nowrap text-sm xl:text-base ${
                   pathname === item.href ? 'text-paw-primary' : 'text-paw-dark hover:text-paw-primary'
                 }`}
                 style={{
@@ -95,6 +95,54 @@ export default function Navbar() {
                 {t.nav[item.key as keyof typeof t.nav]}
               </Link>
             ))}
+          </div>
+          
+          {/* Medium screen navigation - compact version */}
+          <div className="hidden md:flex lg:hidden items-center space-x-2 ml-4 flex-1 justify-center">
+            {navItems.slice(0, 6).map((item, index) => (
+              <Link
+                key={item.key}
+                href={item.href}
+                className={`font-medium transition-all duration-300 focus:outline-none transform hover:scale-110 whitespace-nowrap text-xs ${
+                  pathname === item.href ? 'text-paw-primary' : 'text-paw-dark hover:text-paw-primary'
+                }`}
+                style={{
+                  transitionDelay: `${index * 50}ms`
+                }}
+                title={t.nav[item.key as keyof typeof t.nav]}
+              >
+                {item.key === 'products' && language === 'en' ? 'Products' : 
+                 item.key === 'investors' && language === 'en' ? 'Investors' :
+                 item.key === 'about' && language === 'en' ? 'About' :
+                 item.key === 'blog' && language === 'en' ? 'News' :
+                 t.nav[item.key as keyof typeof t.nav]}
+              </Link>
+            ))}
+            {/* More menu for remaining items */}
+            <div className="relative group">
+              <button className="font-medium text-xs text-paw-dark hover:text-paw-primary transition-all duration-300">
+                More
+              </button>
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white shadow-xl rounded-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div className="py-2">
+                  {navItems.slice(6).map((item, index) => (
+                    <Link
+                      key={item.key}
+                      href={item.href}
+                      className={`block px-4 py-2 text-sm transition-all duration-300 ${
+                        pathname === item.href ? 'text-paw-primary bg-paw-light' : 'text-paw-dark hover:text-paw-primary hover:bg-gray-50'
+                      }`}
+                    >
+                      {t.nav[item.key as keyof typeof t.nav]}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Language selector */}
+          <div className="hidden md:flex items-center">
             <select
               value={language}
               onChange={handleLanguageChange}

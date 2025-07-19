@@ -31,15 +31,13 @@ export default function ProductsSection() {
                 <div className="relative group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-paw-primary to-paw-deep rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
                   <div className="relative bg-gradient-to-br from-paw-light to-white rounded-2xl overflow-hidden shadow-xl">
-                    <img src="/images/products/methylation-kit.jpg" 
-                         alt={t.products.methylationKit.name}
-                         className="w-full h-full object-contain p-8 hover:scale-105 transition-transform duration-300"
-                         onError={(e) => {
-                           const target = e.target as HTMLImageElement;
-                           target.style.display = 'none';
-                           const placeholder = target.nextElementSibling as HTMLElement;
-                           if (placeholder) placeholder.style.display = 'flex';
-                         }}
+                    <Image 
+                      src="/images/products/methylation-kit.jpg" 
+                      alt={t.products.methylationKit.name}
+                      width={600}
+                      height={400}
+                      className="w-full h-full object-contain p-8 hover:scale-105 transition-transform duration-300"
+                      priority
                     />
                     {/* 占位符 */}
                     <div className="absolute inset-2 bg-gradient-to-br from-paw-light to-white rounded-2xl flex items-center justify-center" style={{display: 'none'}}>
@@ -72,9 +70,7 @@ export default function ProductsSection() {
                   </div>
                 </ScrollAnimatedElement>
                 
-                <ScrollAnimatedElement animation="slide-right" delay={500}>
-                  <h3 className="text-2xl font-bold text-paw-dark">{t.products.methylationKit.subtitle}</h3>
-                </ScrollAnimatedElement>
+
                 
                 <ScrollAnimatedElement animation="slide-right" delay={600}>
                   <p className="text-lg text-paw-dark/80 leading-relaxed">
