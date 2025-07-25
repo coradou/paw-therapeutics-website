@@ -83,7 +83,6 @@ export default function Pipeline() {
                           {index < t.pipeline.projects.paw002.timeline.length - 1 && <span>→</span>}
                         </React.Fragment>
                       ))}
-                      <span className="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs">{t.pipeline.projects.paw002.partner}</span>
                     </div>
                     <p className="text-paw-dark/70 mt-3">
                       {t.pipeline.projects.paw002.description}

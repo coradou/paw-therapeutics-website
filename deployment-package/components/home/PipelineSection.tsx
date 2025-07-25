@@ -87,7 +87,6 @@ export default function PipelineSection() {
                           </div>
                           <div className="flex items-center space-x-1">
                             <span>{t.pipeline.projects.paw002.timeline[1]}</span>
-                            <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{t.pipeline.projects.paw002.partner}</span>
                           </div>
                         </div>
                       </div>

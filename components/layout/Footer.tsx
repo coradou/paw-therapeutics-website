@@ -141,7 +141,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-xs text-gray-600">
-              Copyright © 2025 Paw Therapeutics. All Rights Reserved. 爪子制药有限公司 版权所有
+              Copyright © 2025 Paw Therapeutics. All Rights Reserved. 爪子制药发展（深圳）有限公司 版权所有
             </p>
           </div>
         </div>

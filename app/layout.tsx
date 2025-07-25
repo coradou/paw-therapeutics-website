@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   keywords: ['PAW Therapeutics', 'AI Pharmaceuticals', 'Pet Longevity', 'Anti-aging Drugs', 'Methylation Detection', 'Cross-species Medicine', 'Drug Discovery', 'Canine Therapy', 'Life Extension'],
   authors: [{ name: 'PAW Therapeutics' }],
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', type: 'image/x-icon' }
+    ],
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
   },
@@ -47,11 +50,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Dynamic language and metadata will be handled by the I18nProvider */}
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.svg" />
       </head>
-      <body className={`font-sans`}>
+      <body className={`font-sans`} suppressHydrationWarning>
         <I18nProvider>
           <Navbar />
           <main className="min-h-screen pt-16">

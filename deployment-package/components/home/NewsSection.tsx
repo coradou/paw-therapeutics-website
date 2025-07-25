@@ -33,9 +33,9 @@ export default function NewsSection() {
       link: "https://www.linkedin.com/posts/paw-therapeutics_petlongevity-aiinbiotech-veterinaryinnovation-activity-7336176955270090752-qxQy"
     },
     // 额外的新闻内容
-    ...t.news.extraNews.map((news: any) => ({
+    ...t.news.extraNews.map((news: any, index: number) => ({
       ...news,
-      link: "#"
+      link: index === 0 ? "http://www.cistc.gov.cn/projectdetail.html?column=362&id=9130" : "#"
     }))
   ];
   

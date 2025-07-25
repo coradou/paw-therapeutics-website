@@ -68,7 +68,7 @@ export default function InvestorsSection() {
               <ScrollAnimatedElement animation="fade-up" delay={300}>
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{t.investors.registration.nameZh}</p>
-                  <p className="font-semibold">爪子製藥有限公司</p>
+                  <p className="font-semibold">爪子制药发展（深圳）有限公司</p>
                 </div>
               </ScrollAnimatedElement>
               <ScrollAnimatedElement animation="fade-up" delay={350}>
@@ -80,13 +80,13 @@ export default function InvestorsSection() {
               <ScrollAnimatedElement animation="fade-up" delay={400}>
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{t.investors.registration.regNumber}</p>
-                  <p className="font-semibold">78159356</p>
+                  <p className="font-semibold">91440300MAEL7Y0G3L</p>
                 </div>
               </ScrollAnimatedElement>
               <ScrollAnimatedElement animation="fade-up" delay={450}>
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{t.investors.registration.regDate}</p>
-                  <p className="font-semibold">2024年05月16日</p>
+                  <p className="font-semibold">2025年05月23日</p>
                 </div>
               </ScrollAnimatedElement>
               <ScrollAnimatedElement animation="fade-up" delay={500}>

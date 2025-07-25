@@ -4,6 +4,10 @@ import { saveContact } from '@/lib/storage'
 import { writeFile, mkdir } from 'fs/promises'
 import { join } from 'path'
 
+// 配置限制
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const ALLOWED_FILE_TYPES = ['.pdf', '.doc', '.docx', '.txt', '.jpg', '.jpeg', '.png'];
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData()
@@ -40,19 +44,36 @@ export async function POST(request: Request) {
 
         for (const file of files) {
           if (file.size > 0) {
+            // 🛡️ 文件大小检查
+            if (file.size > MAX_FILE_SIZE) {
+              console.warn(`文件 ${file.name} 超过大小限制: ${file.size} bytes`);
+              continue; // 跳过过大的文件
+            }
+
+            // 🛡️ 文件类型检查
+            const fileExtension = '.' + (file.name.split('.').pop()?.toLowerCase() || '');
+            if (!ALLOWED_FILE_TYPES.includes(fileExtension)) {
+              console.warn(`文件 ${file.name} 类型不允许: ${fileExtension}`);
+              continue; // 跳过不允许的文件类型
+            }
+            
             // 生成唯一文件名
             const timestamp = Date.now()
             const random = Math.random().toString(36).substring(2, 8)
-            const fileExtension = file.name.split('.').pop()
-            const uniqueFileName = `${timestamp}_${random}.${fileExtension}`
+            const uniqueFileName = `${timestamp}_${random}${fileExtension}`
             
-            // 保存文件
+            // 🛡️ 安全的文件保存
             const filePath = join(uploadDir, uniqueFileName)
-            const bytes = await file.arrayBuffer()
-            const buffer = Buffer.from(bytes)
-            await writeFile(filePath, buffer)
             
-            uploadedFileNames.push(uniqueFileName)
+            try {
+              const bytes = await file.arrayBuffer()
+              const buffer = Buffer.from(bytes)
+              await writeFile(filePath, buffer)
+              uploadedFileNames.push(uniqueFileName)
+            } catch (fileWriteError) {
+              console.error(`保存文件 ${file.name} 失败:`, fileWriteError);
+              // 继续处理其他文件
+            }
           }
         }
       } catch (fileError) {
@@ -117,7 +138,13 @@ export async function POST(request: Request) {
           `,
         }
 
-        await sgMail.send(msg)
+        // 🛡️ 添加邮件发送超时
+        const emailPromise = sgMail.send(msg);
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('邮件发送超时')), 10000)
+        );
+        
+        await Promise.race([emailPromise, timeoutPromise]);
         emailSent = true;
         console.log('邮件通知已发送');
       } catch (emailError) {

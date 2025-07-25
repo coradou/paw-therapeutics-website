@@ -54,11 +54,11 @@ export default function InvestorsPage() {
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-100">
                   <span className="text-paw-dark/70">{t.investors.registration.regNumber}</span>
-                  <span className="font-medium text-paw-dark">79053642-000-11-24-7</span>
+                  <span className="font-medium text-paw-dark">91440300MAEL7Y0G3L</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-100">
                   <span className="text-paw-dark/70">{t.investors.registration.regDate}</span>
-                  <span className="font-medium text-paw-dark">2024-11-22</span>
+                  <span className="font-medium text-paw-dark">2025-05-23</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-100">
                   <span className="text-paw-dark/70">{t.investors.registration.companyType}</span>
@@ -69,7 +69,7 @@ export default function InvestorsPage() {
                   <span className="font-medium text-green-600">{t.company.statusValue}</span>
                 </div>
               </div>
-              <a href="https://www.cr.gov.hk/" target="_blank" className="inline-flex items-center text-paw-primary hover:text-paw-deep transition-colors mt-4">
+              <a href="https://www.gsxt.gov.cn/index.html#/corp-query-search-1?keyword=91440300MAEL7Y0G3L" target="_blank" className="inline-flex items-center text-paw-primary hover:text-paw-deep transition-colors mt-4">
                 {t.investors.registration.link}
                 <ExternalLink className="w-4 h-4 ml-2" />
               </a>

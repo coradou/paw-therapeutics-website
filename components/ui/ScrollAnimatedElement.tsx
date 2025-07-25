@@ -25,9 +25,17 @@ export default function ScrollAnimatedElement({
 }: ScrollAnimatedElementProps) {
   const elementRef = useRef<HTMLDivElement>(null);
   const [animationState, setAnimationState] = useState<'initial' | 'entering' | 'entered' | 'leaving'>('initial');
+  const [isMounted, setIsMounted] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    // Don't initialize observer until mounted to prevent SSR issues
+    if (!isMounted) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -75,9 +83,14 @@ export default function ScrollAnimatedElement({
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [threshold, duration, animationState]);
+  }, [threshold, duration, animationState, isMounted]);
 
   const getAnimationClass = () => {
+    if (!isMounted) {
+      // Return safe default for SSR
+      return `scroll-animated scroll-animated-${animation} out-of-view`;
+    }
+
     const baseClass = `scroll-animated scroll-animated-${animation}`;
     
     switch (animationState) {
@@ -95,6 +108,14 @@ export default function ScrollAnimatedElement({
   };
 
   const getAnimationStyle = () => {
+    if (!isMounted) {
+      // Return safe default for SSR
+      return {
+        '--animation-delay': '0ms',
+        '--animation-duration': `${duration}ms`,
+      } as React.CSSProperties;
+    }
+
     const staggerDelay = stagger ? index * 100 : 0;
     const totalDelay = delay + staggerDelay;
     

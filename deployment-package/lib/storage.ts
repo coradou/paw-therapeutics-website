@@ -10,12 +10,15 @@ export interface ResumeData {
   resumeFileName: string;
   resumeContent?: string; // 简历内容文本
   aiAnalysis?: {
-    skills: string[];
+    score: number;
+    strengths: string[];
+    weaknesses: string[];
+    recommendation: 'recommended' | 'consider' | 'not_recommended';
+    summary: string;
+    technicalSkills: string[];
     experience: string;
     education: string;
-    summary: string;
-    score: number;
-    suggestions: string[];
+    fitForPosition: string;
     analyzedAt: string;
   };
   submittedAt: string;
@@ -74,14 +77,91 @@ const RESUMES_FILE = path.join(DATA_DIR, 'resumes.json');
 const CONTACTS_FILE = path.join(DATA_DIR, 'contacts.json');
 const INTERVIEWS_FILE = path.join(DATA_DIR, 'interviews.json');
 const UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
+const CONTACT_UPLOADS_DIR = path.join(DATA_DIR, 'contact-uploads');
+
+// 🛡️ 文件操作锁，防止竞态条件
+const fileLocks = new Map<string, Promise<any>>();
+
+// 🛡️ 安全的JSON解析
+function safeJSONParse<T>(data: string, fallback: T): T {
+  try {
+    const parsed = JSON.parse(data);
+    return parsed as T;
+  } catch (error) {
+    console.error('JSON解析失败:', error);
+    return fallback;
+  }
+}
+
+// 🛡️ 安全的文件读取
+async function safeReadFile(filePath: string, fallback: string = '[]'): Promise<string> {
+  try {
+    const data = await fs.readFile(filePath, 'utf-8');
+    return data || fallback;
+  } catch (error) {
+    if ((error as any).code === 'ENOENT') {
+      // 文件不存在，返回默认值
+      return fallback;
+    }
+    console.error('文件读取失败:', error);
+    throw error;
+  }
+}
+
+// 🛡️ 安全的文件写入（带锁）
+async function safeWriteFile(filePath: string, data: string): Promise<void> {
+  // 使用文件路径作为锁的key
+  const lockKey = filePath;
+  
+  // 如果已有操作在进行，等待完成
+  if (fileLocks.has(lockKey)) {
+    await fileLocks.get(lockKey);
+  }
+  
+  // 创建新的写入操作
+  const writeOperation = async () => {
+    try {
+      // 确保目录存在
+      await fs.mkdir(path.dirname(filePath), { recursive: true });
+      
+      // 原子性写入：先写入临时文件，再重命名
+      const tempFile = `${filePath}.tmp`;
+      await fs.writeFile(tempFile, data, 'utf-8');
+      await fs.rename(tempFile, filePath);
+    } catch (error) {
+      console.error('文件写入失败:', error);
+      throw error;
+    }
+  };
+  
+  const operation = writeOperation();
+  fileLocks.set(lockKey, operation);
+  
+  try {
+    await operation;
+  } finally {
+    fileLocks.delete(lockKey);
+  }
+}
 
 // 确保数据目录存在
 async function ensureDataDir() {
   try {
     await fs.mkdir(DATA_DIR, { recursive: true });
     await fs.mkdir(UPLOADS_DIR, { recursive: true });
+    await fs.mkdir(CONTACT_UPLOADS_DIR, { recursive: true });
+    
+    // 检查目录权限
+    try {
+      await fs.access(DATA_DIR, fs.constants.W_OK);
+      await fs.access(UPLOADS_DIR, fs.constants.W_OK);
+      await fs.access(CONTACT_UPLOADS_DIR, fs.constants.W_OK);
+    } catch (permError: any) {
+      console.warn('⚠️ 目录权限可能不足:', permError.message);
+    }
   } catch (error) {
-    console.error('Error creating data directory:', error);
+    console.error('❌ 创建数据目录失败:', error);
+    throw new Error('无法创建必要的数据目录，请检查文件系统权限');
   }
 }
 
@@ -89,10 +169,10 @@ async function ensureDataDir() {
 export async function getAllResumes(): Promise<ResumeData[]> {
   try {
     await ensureDataDir();
-    const data = await fs.readFile(RESUMES_FILE, 'utf-8');
-    return JSON.parse(data);
+    const data = await safeReadFile(RESUMES_FILE);
+    return safeJSONParse(data, []);
   } catch (error) {
-    // 文件不存在时返回空数组
+    console.error('获取简历数据失败:', error);
     return [];
   }
 }
@@ -110,7 +190,7 @@ export async function saveResume(resume: Omit<ResumeData, 'id' | 'submittedAt' |
   };
   
   resumes.push(newResume);
-  await fs.writeFile(RESUMES_FILE, JSON.stringify(resumes, null, 2));
+  await safeWriteFile(RESUMES_FILE, JSON.stringify(resumes, null, 2));
   
   return newResume;
 }
@@ -125,7 +205,7 @@ export async function updateResume(id: string, updates: Partial<ResumeData>): Pr
   }
   
   resumes[index] = { ...resumes[index], ...updates };
-  await fs.writeFile(RESUMES_FILE, JSON.stringify(resumes, null, 2));
+  await safeWriteFile(RESUMES_FILE, JSON.stringify(resumes, null, 2));
   
   return resumes[index];
 }
@@ -136,18 +216,28 @@ export async function getResumeById(id: string): Promise<ResumeData | null> {
   return resumes.find(resume => resume.id === id) || null;
 }
 
-// 保存简历文件
+// 🛡️ 安全的简历文件保存
 export async function saveResumeFile(file: File, resumeId: string): Promise<string> {
   await ensureDataDir();
+  
+  // 🛡️ 文件大小限制
+  const MAX_RESUME_SIZE = 20 * 1024 * 1024; // 20MB
+  if (file.size > MAX_RESUME_SIZE) {
+    throw new Error(`简历文件过大，最大允许${MAX_RESUME_SIZE / 1024 / 1024}MB`);
+  }
   
   const fileExtension = path.extname(file.name);
   const fileName = `${resumeId}${fileExtension}`;
   const filePath = path.join(UPLOADS_DIR, fileName);
   
-  const buffer = await file.arrayBuffer();
-  await fs.writeFile(filePath, Buffer.from(buffer));
-  
-  return fileName;
+  try {
+    const buffer = await file.arrayBuffer();
+    await fs.writeFile(filePath, Buffer.from(buffer));
+    return fileName;
+  } catch (error) {
+    console.error('保存简历文件失败:', error);
+    throw new Error('简历文件保存失败');
+  }
 }
 
 // 获取简历文件路径
@@ -161,10 +251,10 @@ export function getResumeFilePath(fileName: string): string {
 export async function getAllContacts(): Promise<ContactData[]> {
   try {
     await ensureDataDir();
-    const data = await fs.readFile(CONTACTS_FILE, 'utf-8');
-    return JSON.parse(data);
+    const data = await safeReadFile(CONTACTS_FILE);
+    return safeJSONParse(data, []);
   } catch (error) {
-    // 文件不存在时返回空数组
+    console.error('获取联系信息失败:', error);
     return [];
   }
 }
@@ -182,7 +272,7 @@ export async function saveContact(contact: Omit<ContactData, 'id' | 'submittedAt
   };
   
   contacts.unshift(newContact); // 新消息排在前面
-  await fs.writeFile(CONTACTS_FILE, JSON.stringify(contacts, null, 2));
+  await safeWriteFile(CONTACTS_FILE, JSON.stringify(contacts, null, 2));
   
   return newContact;
 }
@@ -197,7 +287,7 @@ export async function updateContact(id: string, updates: Partial<ContactData>): 
   }
   
   contacts[index] = { ...contacts[index], ...updates };
-  await fs.writeFile(CONTACTS_FILE, JSON.stringify(contacts, null, 2));
+  await safeWriteFile(CONTACTS_FILE, JSON.stringify(contacts, null, 2));
   
   return contacts[index];
 }
@@ -246,10 +336,10 @@ export async function getResumeStats() {
 export async function getAllInterviews(): Promise<InterviewData[]> {
   try {
     await ensureDataDir();
-    const data = await fs.readFile(INTERVIEWS_FILE, 'utf-8');
-    return JSON.parse(data);
+    const data = await safeReadFile(INTERVIEWS_FILE);
+    return safeJSONParse(data, []);
   } catch (error) {
-    // 文件不存在时返回空数组
+    console.error('获取面试数据失败:', error);
     return [];
   }
 }
@@ -265,7 +355,7 @@ export async function saveInterviewData(interviewData: Omit<InterviewData, 'id' 
   };
   
   interviews.push(newInterview);
-  await fs.writeFile(INTERVIEWS_FILE, JSON.stringify(interviews, null, 2));
+  await safeWriteFile(INTERVIEWS_FILE, JSON.stringify(interviews, null, 2));
   
   return newInterview;
 }
@@ -280,9 +370,7 @@ export async function updateInterview(id: string, updates: Partial<InterviewData
   }
   
   interviews[index] = { ...interviews[index], ...updates };
-  
-  await ensureDataDir();
-  await fs.writeFile(INTERVIEWS_FILE, JSON.stringify(interviews, null, 2));
+  await safeWriteFile(INTERVIEWS_FILE, JSON.stringify(interviews, null, 2));
   
   return interviews[index];
 }

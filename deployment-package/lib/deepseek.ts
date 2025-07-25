@@ -1,123 +1,133 @@
 interface DeepseekAnalysis {
-  skills: string[];
+  score: number;
+  strengths: string[];
+  weaknesses: string[];
+  recommendation: 'recommended' | 'consider' | 'not_recommended';
+  summary: string;
+  technicalSkills: string[];
   experience: string;
   education: string;
-  summary: string;
-  score: number;
-  suggestions: string[];
+  fitForPosition: string;
 }
 
 export async function analyzeResumeWithDeepseek(resumeText: string, position: string): Promise<DeepseekAnalysis> {
-  const apiKey = process.env.DEEPSEEK_API_KEY || 'sk-073e99ff73a14eacacedfefa2cbaf7bd';
+  const apiKey = process.env.DEEPSEEK_API_KEY;
   
-  const prompt = `
-请分析以下简历内容，针对"${position}"岗位进行评估：
+  if (!apiKey) {
+    console.warn('⚠️ 未配置Deepseek API Key，跳过AI分析');
+    throw new Error('Deepseek API Key未配置');
+  }
+
+  const prompt = `请对以下简历进行分析，针对${position}岗位评估候选人的适配度。
 
 简历内容：
 ${resumeText}
 
-请按照以下JSON格式返回分析结果，确保返回的是有效的JSON：
-
+请以JSON格式返回分析结果，包含以下字段：
 {
-  "skills": ["技能1", "技能2", "技能3"],
-  "experience": "工作经验总结",
-  "education": "教育背景总结", 
-  "summary": "候选人整体评价",
-  "score": 85,
-  "suggestions": ["建议1", "建议2", "建议3"]
-}
-
-要求：
-1. skills：提取候选人的关键技能，最多5个
-2. experience：总结工作经验，2-3句话
-3. education：总结教育背景，1-2句话
-4. summary：对候选人的整体评价，2-3句话
-5. score：综合评分（0-100分）
-6. suggestions：改进建议，最多3个
-
-请只返回JSON，不要包含其他文字。
-`;
+  "score": 0-100的综合评分,
+  "strengths": ["优势1", "优势2"],
+  "weaknesses": ["不足1", "不足2"],
+  "recommendation": "recommended|consider|not_recommended",
+  "summary": "整体评价总结",
+  "technicalSkills": ["技能1", "技能2"],
+  "experience": "工作经验描述",
+  "education": "教育背景描述",
+  "fitForPosition": "与岗位匹配度分析"
+}`;
 
   try {
-    const response = await fetch('https://api.deepseek.com/chat/completions', {
+    // 🛡️ 创建超时Promise
+    const timeoutPromise = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('API请求超时')), 30000)
+    );
+
+    // 🛡️ API请求Promise
+    const apiPromise = fetch('https://api.deepseek.com/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
+        'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         model: 'deepseek-chat',
         messages: [
           {
+            role: 'system',
+            content: '你是一个专业的HR助手，负责分析简历和评估候选人。请始终返回有效的JSON格式。'
+          },
+          {
             role: 'user',
             content: prompt
           }
         ],
-        temperature: 0.3,
-        max_tokens: 1000
-      })
+        temperature: 0.7,
+        max_tokens: 2000,
+      }),
     });
 
+    // 🛡️ 使用Promise.race来处理超时
+    const response = await Promise.race([apiPromise, timeoutPromise]);
+
     if (!response.ok) {
-      throw new Error(`Deepseek API error: ${response.status}`);
+      const errorText = await response.text();
+      console.error('Deepseek API响应错误:', response.status, errorText);
+      throw new Error(`API请求失败: ${response.status}`);
     }
 
     const data = await response.json();
-    const content = data.choices[0]?.message?.content;
     
-    if (!content) {
-      throw new Error('No content returned from Deepseek API');
+    if (!data.choices || data.choices.length === 0) {
+      console.error('Deepseek API返回数据格式异常:', data);
+      throw new Error('API返回数据格式异常');
     }
 
-    // 尝试解析JSON响应
-    try {
-      const analysis = JSON.parse(content);
-      
-      // 验证返回的数据结构
-      if (!analysis.skills || !analysis.experience || !analysis.summary || typeof analysis.score !== 'number') {
-        throw new Error('Invalid response structure from Deepseek API');
-      }
-      
-      return analysis;
-    } catch (parseError) {
-      console.error('Failed to parse Deepseek response:', content);
-      
-      // 如果解析失败，返回默认分析结果
-      return {
-        skills: extractSkillsFromText(resumeText),
-        experience: '需要进一步分析工作经验',
-        education: '需要进一步分析教育背景',
-        summary: '此简历需要人工审核分析',
-        score: 60,
-        suggestions: ['建议进行面试进一步了解', '可以补充更多项目经验', '建议优化简历格式']
-      };
-    }
-  } catch (error) {
-    console.error('Deepseek API error:', error);
+    const content = data.choices[0].message.content;
     
-    // API调用失败时返回基础分析
+    // 🛡️ 安全的JSON解析
+    let analysis: DeepseekAnalysis;
+    try {
+      analysis = JSON.parse(content);
+    } catch (jsonError) {
+      console.error('JSON解析失败:', jsonError, 'Content:', content);
+      throw new Error('AI分析结果格式错误');
+    }
+
+    // 🛡️ 验证返回数据结构
+    if (!analysis || typeof analysis !== 'object') {
+      throw new Error('AI分析结果结构无效');
+    }
+
+    // 🛡️ 提供默认值以防止undefined
+    const safeAnalysis: DeepseekAnalysis = {
+      score: Number(analysis.score) || 0,
+      strengths: Array.isArray(analysis.strengths) ? analysis.strengths : [],
+      weaknesses: Array.isArray(analysis.weaknesses) ? analysis.weaknesses : [],
+      recommendation: analysis.recommendation || 'consider',
+      summary: analysis.summary || '分析完成',
+      technicalSkills: Array.isArray(analysis.technicalSkills) ? analysis.technicalSkills : [],
+      experience: analysis.experience || '待补充',
+      education: analysis.education || '待补充',
+      fitForPosition: analysis.fitForPosition || '待分析'
+    };
+
+    console.log('✅ Deepseek分析完成, 评分:', safeAnalysis.score);
+    return safeAnalysis;
+
+  } catch (error) {
+    console.error('❌ Deepseek分析失败:', error);
+    
+    // 🛡️ 返回安全的默认分析结果，而不是抛出错误
     return {
-      skills: extractSkillsFromText(resumeText),
-      experience: '需要进一步分析工作经验',
-      education: '需要进一步分析教育背景', 
-      summary: 'API分析暂不可用，建议人工审核',
-      score: 60,
-      suggestions: ['建议进行人工审核', '可以进行电话沟通', '考虑安排面试']
+      score: 50,
+      strengths: ['简历已提交'],
+      weaknesses: ['AI分析暂不可用'],
+      recommendation: 'consider',
+      summary: `针对${position}岗位的简历已收到，AI分析功能暂时不可用，请手动审核。`,
+      technicalSkills: ['待人工评估'],
+      experience: '待人工评估',
+      education: '待人工评估',
+      fitForPosition: '需要人工审核评估'
     };
   }
-}
-
-// 简单的技能提取函数作为备用
-function extractSkillsFromText(text: string): string[] {
-  const commonSkills = [
-    'Python', 'JavaScript', 'Java', 'React', 'Vue', 'Node.js', 'SQL', 'MongoDB',
-    'AWS', 'Docker', 'Kubernetes', 'Git', 'Linux', 'Machine Learning', 'AI',
-    '数据分析', '项目管理', '团队协作', '沟通能力', '领导力'
-  ];
-  
-  const foundSkills = commonSkills.filter(skill => 
-    text.toLowerCase().includes(skill.toLowerCase())
-  );
-  
-  return foundSkills.slice(0, 5);
 } 

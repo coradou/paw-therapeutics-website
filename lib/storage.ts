@@ -10,12 +10,15 @@ export interface ResumeData {
   resumeFileName: string;
   resumeContent?: string; // 简历内容文本
   aiAnalysis?: {
-    skills: string[];
+    score: number;
+    strengths: string[];
+    weaknesses: string[];
+    recommendation: 'recommended' | 'consider' | 'not_recommended';
+    summary: string;
+    technicalSkills: string[];
     experience: string;
     education: string;
-    summary: string;
-    score: number;
-    suggestions: string[];
+    fitForPosition: string;
     analyzedAt: string;
   };
   submittedAt: string;

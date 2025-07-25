@@ -160,6 +160,12 @@ export default function CareersPage() {
   const startAIInterview = async () => {
     if (!selectedJob) return;
     
+    // 检查AI面试API是否配置
+    if (!AI_INTERVIEW_API_BASE || AI_INTERVIEW_API_BASE.includes('undefined')) {
+      alert('AI面试功能暂时不可用，请联系管理员配置AI面试系统。\n\n您可以选择上传简历并提交普通申请。');
+      return;
+    }
+    
     setIsAIInterviewMode(true);
     setIsProcessing(true);
     setConversationHistory([]);
@@ -167,6 +173,11 @@ export default function CareersPage() {
     
     try {
       const jobTitle = getNestedTranslation(t, selectedJob.titleKey);
+      
+      // 添加超时控制
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒超时
+      
       const response = await fetch(`${AI_INTERVIEW_API_BASE}/start`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -174,9 +185,16 @@ export default function CareersPage() {
           position: jobTitle,
           candidateName: formData.name || '候选人',
           candidateEmail: formData.email || '',
-          resumeAnalysis: null // 可以在这里传入简历分析结果
-        })
+          resumeAnalysis: null
+        }),
+        signal: controller.signal
       });
+      
+      clearTimeout(timeoutId);
+      
+      if (!response.ok) {
+        throw new Error(`服务器响应错误: ${response.status}`);
+      }
       
       const data = await response.json();
       if (data.success) {
@@ -193,7 +211,18 @@ export default function CareersPage() {
       }
     } catch (error) {
       console.error('开始AI面试失败:', error);
-      alert('AI面试启动失败，请稍后再试');
+      setIsAIInterviewMode(false); // 重置面试模式
+      
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      const errorName = error instanceof Error ? error.name : '';
+      
+      if (errorName === 'AbortError') {
+        alert('连接超时，请检查网络连接后重试。\n\n您也可以选择上传简历并提交普通申请。');
+      } else if (errorMessage.includes('Failed to fetch')) {
+        alert('无法连接到AI面试系统，可能服务未启动。\n\n您可以选择上传简历并提交普通申请。');
+      } else {
+        alert(`AI面试启动失败: ${errorMessage}\n\n您可以选择上传简历并提交普通申请。`);
+      }
     } finally {
       setIsProcessing(false);
     }

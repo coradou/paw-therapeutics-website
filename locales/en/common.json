@@ -117,6 +117,12 @@
     },
     "extraNews": [
       {
+        "category": "Government Announcement",
+        "date": "January 8, 2025",
+        "title": "PAW Therapeutics Listed on Ministry of Science and Technology Website",
+        "summary": "PAW Therapeutics project has been officially listed on the Ministry of Science and Technology website, marking national-level recognition of the company's innovation in science and technology and contribution to pet health technology development."
+      },
+      {
         "category": "Technology Breakthrough",
         "date": "October 15, 2024",
         "title": "AI-Driven Drug Screening Platform Achieves Major Breakthrough",
@@ -175,14 +181,14 @@
     },
     "keyMetrics": {
       "title": "Key Data & Achievements",
-      "subtitle": "Data-driven scientific strength, witnessing our professional capabilities",
+      "subtitle": "Data-driven preclinical research strength, witnessing our professional capabilities",
       "projects": "R&D Projects",
       "investment": "R&D Investment Ratio",
       "partnerships": "Top University Partnerships",
       "founded": "Founded Year"
     },
     "scientificExcellence": {
-      "title": "Scientific Excellence & Innovation Platform",
+      "title": "Preclinical Research Excellence & Innovation Platform",
       "subtitle": "We gather top scholars from Oxford University, Imperial College London, and UC Berkeley, with Nobel Prize winners as advisors.",
       "aiDriven": {
         "title": "AI-Driven Drug Discovery",
@@ -297,12 +303,9 @@
     "chartHeaders": [
       "Project Name",
       "Target",
-      "Research",
+      "Preclinical Research",
       "Clinical",
-      "Approval",
-      "Humanization",
-      "Partnership",
-      ""
+      "Approval"
     ],
     "dogLongevity": "Dog Longevity",
     "elderlyDiseases": "Aging Diseases",
@@ -313,21 +316,19 @@
         "status": "Clinical Stage",
         "description": "IL11 inhibitor for delaying canine aging process and improving quality of life in elderly dogs",
         "timeline": [
-          "2025 Research",
-          "2026 Clinical Approval",
-          "2028 Humanization",
-          "2029 Partnership"
+          "2025 Preclinical Research",
+          "2028 Clinical Approval",
+          "2030 Humanization"
         ]
       },
       "paw002": {
         "name": "PAW-002",
         "target": "IGF-1",
         "status": "Clinical Stage",
-        "partner": "Granule Bio",
-        "description": "IGF-1 regulator developed in collaboration with Granule Bio for extending canine lifespan",
+        "description": "IGF-1 regulator for extending canine lifespan",
         "timeline": [
-          "2025 Research",
-          "2028 Partnership"
+          "2025 Preclinical Research",
+          "2028 Clinical Approval"
         ]
       },
       "paw003": {
@@ -336,8 +337,8 @@
         "status": "Research Stage",
         "description": "TGF-β inhibitor for treating canine fibrotic diseases and delaying aging",
         "timeline": [
-          "2025 Research",
-          "2027 Clinical Approval"
+          "2025 Preclinical Research",
+          "2028 Clinical Approval"
         ]
       },
       "paw004": {
@@ -346,7 +347,7 @@
         "status": "Preclinical",
         "description": "Innovative therapeutic drug for canine arthritis to improve joint health in elderly dogs",
         "timeline": [
-          "2025 Research",
+          "2025 Preclinical Research",
           "2028 Clinical Approval"
         ]
       },
@@ -356,7 +357,7 @@
         "status": "Research Stage",
         "description": "Innovative drug for canine pancreatitis to improve digestive system health in elderly dogs",
         "timeline": [
-          "2025 Research",
+          "2025 Preclinical Research",
           "2027 Clinical Approval"
         ]
       }
@@ -477,11 +478,11 @@
       "title": "Company Registration Information",
       "nameZh": "Company Name (Chinese)",
       "nameEn": "Company Name (English)",
-      "regNumber": "Business Registration Number",
+      "regNumber": "Unified Social Credit Code",
       "regDate": "Registration Date",
       "companyType": "Company Type",
       "status": "Company Status",
-      "link": "View Hong Kong Company Registration Information"
+              "link": "View Company Registration Information"
     },
     "contact": {
       "title": "Investor Contact",
@@ -559,7 +560,7 @@
         },
         {
           "name": "Zhang Ying",
-          "title": "CSO"
+          "title": "CPO"
         }
       ]
     },
@@ -597,7 +598,7 @@
     },
     "lihangpeng": {
       "name": "Dr. Li Hangpeng",
-      "role": "CIO",
+      "role": "CPO",
       "description": "Oxford University Medical PhD Student<br/>First author in Nature Protocols<br/>Participated in Pfizer and J&J AI model development"
     }
   },
@@ -619,8 +620,8 @@
   },
   "companyInfo": {
     "registration": {
-      "date": "May 16, 2024",
-      "type": "Private Limited Company",
+      "date": "May 23, 2025",
+      "type": "Limited Liability Company (Wholly-owned by Natural Person)",
       "status": "Active"
     },
     "contact": {
@@ -1243,10 +1244,10 @@
       "title": "Contact Information",
       "address": {
         "title": "Address",
-        "company": "PAW Therapeutics Limited",
-        "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+        "company": "Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+        "details": "5F-502, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen"
       },
-      "addressValue": "PAW Therapeutics Limited\nFLAT E19, 10/F, NO.52 HUNG TO ROAD,\nKWUN TONG, HONG KONG",
+      "addressValue": "Paw Therapeutics Development (Shenzhen) Co., Ltd.\n5F-502, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen",
       "email": {
         "title": "Email",
         "value": "coradou@pawmed.cn"
@@ -1395,8 +1396,8 @@
           "title": "11. Contact Us",
           "content": "If you have any questions about this privacy policy or need to exercise your rights, please contact us through:",
           "email": "Email: privacy@pawmed.cn",
-          "address": "Address: PAW Therapeutics Limited Hong Kong",
-          "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+          "address": "Address: Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+          "details": "5F-502, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen"
         }
       }
     },
@@ -1423,8 +1424,8 @@
           "title": "12. Contact Us",
           "content": "If you have any questions about these terms of use, please contact us through:",
           "email": "Email: legal@pawmed.cn",
-          "address": "Address: PAW Therapeutics Limited Hong Kong",
-          "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+          "address": "Address: Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+          "details": "5F-502, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen"
         }
       }
     }
@@ -1449,10 +1450,13 @@
     "support": "Academic Support"
   },
   "company": {
-    "nameZhValue": "PAW Therapeutics Limited",
-    "typeValue": "Private Limited Company",
+    "nameZhValue": "爪子制药发展（深圳）有限公司",
+    "nameEnValue": "Paw Therapeutics Limited",
+    "regNumberValue": "91440300MAEL7Y0G3L",
+    "typeValue": "Limited Liability Company (Wholly-owned by Natural Person)",
+    "regDateValue": "May 23, 2025",
     "statusValue": "Incorporated",
     "addressLabel": "Address:",
-    "addressValue": "Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen"
+    "addressValue": "5F-502, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen"
   }
 } 
