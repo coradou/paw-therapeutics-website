@@ -123,6 +123,12 @@
     },
     "extraNews": [
       {
+        "category": "Government Announcement",
+        "date": "January 8, 2025",
+        "title": "PAW Therapeutics Listed on Ministry of Science and Technology Website",
+        "summary": "PAW Therapeutics project has been officially listed on the Ministry of Science and Technology website, marking national-level recognition of the company's innovation in science and technology and contribution to pet health technology development."
+      },
+      {
         "category": "Technology Breakthrough",
         "date": "October 15, 2024",
         "title": "AI-Driven Drug Screening Platform Achieves Major Breakthrough",
@@ -181,14 +187,14 @@
     },
     "keyMetrics": {
       "title": "Key Data & Achievements",
-      "subtitle": "Data-driven scientific strength, witnessing our professional capabilities",
+      "subtitle": "Data-driven preclinical research strength, witnessing our professional capabilities",
       "projects": "R&D Projects",
       "investment": "R&D Investment Ratio",
       "partnerships": "Top University Partnerships",
       "founded": "Founded Year"
     },
     "scientificExcellence": {
-      "title": "Scientific Excellence & Innovation Platform",
+      "title": "Preclinical Research Excellence & Innovation Platform",
       "subtitle": "We gather top scholars from Oxford University, Imperial College London, and UC Berkeley, with Nobel Prize winners as advisors.",
       "aiDriven": {
         "title": "AI-Driven Drug Discovery",
@@ -305,9 +311,13 @@
       "Target",
       "Preclinical Research",
       "Clinical",
+<<<<<<< HEAD
       "Approval",
       "Humanization",
       ""
+=======
+      "Approval"
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
     ],
     "dogLongevity": "Dog Longevity",
     "elderlyDiseases": "Aging Diseases",
@@ -327,8 +337,7 @@
         "name": "PAW-002",
         "target": "IGF-1",
         "status": "Clinical Stage",
-        "partner": "Granule Bio",
-        "description": "IGF-1 regulator developed in collaboration with Granule Bio for extending canine lifespan",
+        "description": "IGF-1 regulator for extending canine lifespan",
         "timeline": [
           "2025 Preclinical Research",
           "2028 Clinical Approval"
@@ -485,7 +494,11 @@
       "regDate": "Registration Date",
       "companyType": "Company Type",
       "status": "Company Status",
+<<<<<<< HEAD
       "link": "View Company Registration Information"
+=======
+              "link": "View Company Registration Information"
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
     },
     "contact": {
       "title": "Investor Contact",
@@ -601,7 +614,11 @@
     },
     "lihangpeng": {
       "name": "Dr. Li Hangpeng",
+<<<<<<< HEAD
       "role": "CSO",
+=======
+      "role": "CPO",
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
       "description": "Oxford University Medical PhD Student<br/>First author in Nature Protocols<br/>Participated in Pfizer and J&J AI model development"
     }
   },
@@ -623,8 +640,8 @@
   },
   "companyInfo": {
     "registration": {
-      "date": "May 16, 2024",
-      "type": "Private Limited Company",
+      "date": "May 23, 2025",
+      "type": "Limited Liability Company (Wholly-owned by Natural Person)",
       "status": "Active"
     },
     "contact": {
@@ -1260,9 +1277,15 @@
       "address": {
         "title": "Address",
         "company": "Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+<<<<<<< HEAD
         "details": "Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen"
       },
       "addressValue": "Shenzhen Office: Paw Therapeutics Development (Shenzhen) Co., Ltd.\nRoom 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen\n\nHong Kong Office: PAW Therapeutics Limited\nFLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG",
+=======
+        "details": "5F-502, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen"
+      },
+      "addressValue": "Paw Therapeutics Development (Shenzhen) Co., Ltd.\n5F-502, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen",
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
       "email": {
         "title": "Email",
         "value": "coradou@pawmed.cn"
@@ -1412,7 +1435,11 @@
           "content": "If you have any questions about this privacy policy or need to exercise your rights, please contact us through:",
           "email": "Email: privacy@pawmed.cn",
           "address": "Address: Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+<<<<<<< HEAD
           "details": "Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen"
+=======
+          "details": "5F-502, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen"
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
         }
       }
     },
@@ -1440,7 +1467,11 @@
           "content": "If you have any questions about these terms of use, please contact us through:",
           "email": "Email: legal@pawmed.cn",
           "address": "Address: Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+<<<<<<< HEAD
           "details": "Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen"
+=======
+          "details": "5F-502, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen"
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
         }
       }
     }
@@ -1465,10 +1496,21 @@
     "support": "Academic Support"
   },
   "company": {
+<<<<<<< HEAD
     "nameZhValue": "Paw Therapeutics Development (Shenzhen) Co., Ltd.",
     "typeValue": "Limited Liability Company (Sole Proprietorship)",
     "statusValue": "Incorporated",
     "addressLabel": "Address:",
     "addressValue": "Shenzhen Office: Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen\nHong Kong Office: FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+=======
+    "nameZhValue": "爪子制药发展（深圳）有限公司",
+    "nameEnValue": "Paw Therapeutics Limited",
+    "regNumberValue": "91440300MAEL7Y0G3L",
+    "typeValue": "Limited Liability Company (Wholly-owned by Natural Person)",
+    "regDateValue": "May 23, 2025",
+    "statusValue": "Incorporated",
+    "addressLabel": "Address:",
+    "addressValue": "5F-502, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen"
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
   }
 } 

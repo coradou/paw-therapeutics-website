@@ -69,7 +69,11 @@ export default function InvestorsPage() {
                   <span className="font-medium text-green-600">{t.company.statusValue}</span>
                 </div>
               </div>
+<<<<<<< HEAD
               <a href="https://www.qcc.com/firm/69fe1318da6f04ae72accad7ee0e42cf.html" target="_blank" className="inline-flex items-center text-paw-primary hover:text-paw-deep transition-colors mt-4">
+=======
+              <a href="https://www.gsxt.gov.cn/index.html#/corp-query-search-1?keyword=91440300MAEL7Y0G3L" target="_blank" className="inline-flex items-center text-paw-primary hover:text-paw-deep transition-colors mt-4">
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
                 {t.investors.registration.link}
                 <ExternalLink className="w-4 h-4 ml-2" />
               </a>

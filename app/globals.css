@@ -13,6 +13,11 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* 防止水合错误的基础样式 */
+  * {
+    box-sizing: border-box;
+  }
 }
 
 @layer components {
@@ -222,54 +227,105 @@ h1, h2, h3, h4, h5, h6 {
   @apply text-paw-dark font-bold;
 }
 
-/* ScrollAnimatedElement 样式 */
+/* ScrollAnimatedElement 样式 - 优化以减少水合错误 */
 .scroll-animated {
   transition-property: opacity, transform, filter;
   transition-duration: var(--animation-duration, 800ms);
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity, transform;
+  /* 确保初始状态的一致性 */
+  opacity: 0;
+  transform: translateY(40px);
 }
 
-.scroll-animated.out-of-view { opacity: 0; }
+/* 在客户端水合后应用状态 */
+.scroll-animated.out-of-view { 
+  opacity: 0; 
+}
+
 .scroll-animated.entering { 
   opacity: 1; 
   transition-delay: var(--animation-delay, 0ms);
 }
-.scroll-animated.in-view { opacity: 1; }
+
+.scroll-animated.in-view { 
+  opacity: 1; 
+}
+
 .scroll-animated.leaving { 
   opacity: 0; 
   transition-delay: 0ms !important;
 }
 
-/* 动画变体 */
-.scroll-animated-fade-up.out-of-view { transform: translateY(40px); }
-.scroll-animated-fade-up.entering { transform: translateY(0); }
-.scroll-animated-fade-up.in-view { transform: translateY(0); }
-.scroll-animated-fade-up.leaving { transform: translateY(40px); }
+/* 动画变体 - 确保安全的默认状态 */
+.scroll-animated-fade-up {
+  transform: translateY(40px);
+}
+.scroll-animated-fade-up.entering,
+.scroll-animated-fade-up.in-view { 
+  transform: translateY(0); 
+}
+.scroll-animated-fade-up.leaving { 
+  transform: translateY(40px); 
+}
 
-.scroll-animated-fade-down.out-of-view { transform: translateY(-40px); }
-.scroll-animated-fade-down.entering { transform: translateY(0); }
-.scroll-animated-fade-down.in-view { transform: translateY(0); }
-.scroll-animated-fade-down.leaving { transform: translateY(-40px); }
+.scroll-animated-fade-down {
+  transform: translateY(-40px);
+}
+.scroll-animated-fade-down.entering,
+.scroll-animated-fade-down.in-view { 
+  transform: translateY(0); 
+}
+.scroll-animated-fade-down.leaving { 
+  transform: translateY(-40px); 
+}
 
-.scroll-animated-slide-left.out-of-view { transform: translateX(-40px); }
-.scroll-animated-slide-left.entering { transform: translateX(0); }
-.scroll-animated-slide-left.in-view { transform: translateX(0); }
-.scroll-animated-slide-left.leaving { transform: translateX(-40px); }
+.scroll-animated-slide-left {
+  transform: translateX(-40px);
+}
+.scroll-animated-slide-left.entering,
+.scroll-animated-slide-left.in-view { 
+  transform: translateX(0); 
+}
+.scroll-animated-slide-left.leaving { 
+  transform: translateX(-40px); 
+}
 
-.scroll-animated-slide-right.out-of-view { transform: translateX(40px); }
-.scroll-animated-slide-right.entering { transform: translateX(0); }
-.scroll-animated-slide-right.in-view { transform: translateX(0); }
-.scroll-animated-slide-right.leaving { transform: translateX(40px); }
+.scroll-animated-slide-right {
+  transform: translateX(40px);
+}
+.scroll-animated-slide-right.entering,
+.scroll-animated-slide-right.in-view { 
+  transform: translateX(0); 
+}
+.scroll-animated-slide-right.leaving { 
+  transform: translateX(40px); 
+}
 
-.scroll-animated-scale.out-of-view { transform: scale(0.9); opacity: 0; }
-.scroll-animated-scale.entering { transform: scale(1); opacity: 1; }
-.scroll-animated-scale.in-view { transform: scale(1); opacity: 1; }
-.scroll-animated-scale.leaving { transform: scale(0.9); opacity: 0; }
+.scroll-animated-scale {
+  transform: scale(0.9); 
+  opacity: 0; 
+}
+.scroll-animated-scale.entering,
+.scroll-animated-scale.in-view { 
+  transform: scale(1); 
+  opacity: 1; 
+}
+.scroll-animated-scale.leaving { 
+  transform: scale(0.9); 
+  opacity: 0; 
+}
 
-.scroll-animated-fade.out-of-view { opacity: 0; }
-.scroll-animated-fade.in-view { opacity: 1; }
-.scroll-animated-fade.leaving { opacity: 0; }
+.scroll-animated-fade {
+  opacity: 0; 
+}
+.scroll-animated-fade.entering,
+.scroll-animated-fade.in-view { 
+  opacity: 1; 
+}
+.scroll-animated-fade.leaving { 
+  opacity: 0; 
+}
 
 /* 移动端菜单动画关键帧 */
 @keyframes slideDownAndFade {

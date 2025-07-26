@@ -33,9 +33,9 @@ export default function NewsSection() {
       link: "https://cn.chinadaily.com.cn/a/202405/29/WS665721a5a3109f7860de0066.html"
     },
     // 额外的新闻内容
-    ...t.news.extraNews.map((news: any) => ({
+    ...t.news.extraNews.map((news: any, index: number) => ({
       ...news,
-      link: "#"
+      link: index === 0 ? "http://www.cistc.gov.cn/projectdetail.html?column=362&id=9130" : "#"
     }))
   ];
   

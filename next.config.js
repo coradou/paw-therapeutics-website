@@ -61,6 +61,12 @@ const nextConfig = {
         },
       };
     }
+    
+    // 减少开发环境的错误噪音
+    if (process.env.NODE_ENV === 'development') {
+      config.devtool = 'cheap-module-source-map';
+    }
+    
     return config;
   },
   // 添加头部缓存优化
@@ -84,8 +90,26 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/favicon.(ico|svg)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400',
+          },
+        ],
+      },
     ];
   },
+  // 开发环境优化
+  ...(process.env.NODE_ENV === 'development' && {
+    typescript: {
+      ignoreBuildErrors: false,
+    },
+    eslint: {
+      ignoreDuringBuilds: false,
+    },
+  }),
 }
 
 module.exports = withMDX(nextConfig) 

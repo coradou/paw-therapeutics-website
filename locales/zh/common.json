@@ -121,14 +121,14 @@
     },
     "keyMetrics": {
       "title": "核心数据与成就",
-      "subtitle": "数据驱动的科研实力，见证我们的专业能力",
+      "subtitle": "数据驱动的临床前研究实力，见证我们的专业能力",
       "projects": "研发项目",
       "investment": "研发投入占比",
       "partnerships": "顶尖院校合作",
       "founded": "成立年份"
     },
     "scientificExcellence": {
-      "title": "科研实力与创新平台",
+      "title": "临床前研究实力与创新平台",
       "subtitle": "我们汇聚了来自牛津大学、帝国理工学院和UC Berkeley的顶尖学者，团队包含诺贝尔化学奖得主。",
       "aiDriven": {
         "title": "AI驱动的药物发现",
@@ -245,10 +245,14 @@
       "靶点",
       "临床前研究",
       "临床",
+<<<<<<< HEAD
       "获证",
       "人源化",
       "获证",
       ""
+=======
+      "获证"
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
     ],
     "dogLongevity": "犬类延寿",
     "elderlyDiseases": "老年疾病",
@@ -268,8 +272,7 @@
         "name": "PAW-002",
         "target": "IGF-1",
         "status": "临床阶段",
-        "partner": "粒影生物",
-        "description": "IGF-1调节剂，与粒影生物合作开发，用于延长犬类寿命",
+        "description": "IGF-1调节剂，用于延长犬类寿命",
         "timeline": [
           "2025临床前研究",
           "2028临床获证"
@@ -421,11 +424,11 @@
       "title": "公司注册信息",
       "nameZh": "公司名称（中文）",
       "nameEn": "公司名称（英文）",
-      "regNumber": "商业登记编号",
+      "regNumber": "统一社会信用代码",
       "regDate": "注册日期",
       "companyType": "公司类型",
       "status": "公司现状",
-      "link": "查看香港公司注册资料"
+              "link": "查看公司注册资料"
     },
     "contact": {
       "title": "投资者联系",
@@ -476,6 +479,12 @@
       "readMore": "阅读更多"
     },
     "extraNews": [
+      {
+        "category": "政府公示",
+        "date": "2025年1月8日",
+        "title": "爪子制药在国家科技部网站上的公示",
+        "summary": "爪子制药项目在国家科技部官方网站上进行正式公示，标志着公司在科技创新领域获得国家级认可，为宠物健康科技发展贡献力量。"
+      },
       {
         "category": "技术突破",
         "date": "2024年10月15日",
@@ -573,10 +582,10 @@
       "title": "联系方式",
       "address": {
         "title": "地址",
-        "company": "中国香港爪子製藥有限公司",
-        "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+        "company": "爪子制药发展（深圳）有限公司",
+        "details": "深圳市福田区梅林街道北环大道6018号1栋5层502"
       },
-      "addressValue": "中国香港爪子製藥有限公司\nFLAT E19, 10/F, NO.52 HUNG TO ROAD,\nKWUN TONG, HONG KONG",
+      "addressValue": "爪子制药发展（深圳）有限公司\n深圳市福田区梅林街道北环大道6018号1栋5层502",
       "email": {
         "title": "邮箱",
         "value": "coradou@pawmed.cn"
@@ -739,7 +748,11 @@
     },
     "lihangpeng": {
       "name": "李杭蓬",
+<<<<<<< HEAD
       "role": "CSO",
+=======
+      "role": "CPO",
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
       "description": "牛津大学医学博士生<br/>《Nature Protocols》第一作者<br/>参与辉瑞与强生AI模型研发"
     }
   },
@@ -793,8 +806,8 @@
           "title": "11. 联系我们",
           "content": "如果您对本隐私政策有任何疑问或需要行使您的权利，请通过以下方式联系我们：",
           "email": "邮箱：privacy@pawmed.cn",
-          "address": "地址：中国香港爪子製藥有限公司",
-          "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+          "address": "地址：爪子制药发展（深圳）有限公司",
+          "details": "深圳市福田区梅林街道北环大道6018号1栋5层502"
         }
       }
     },
@@ -821,8 +834,8 @@
           "title": "12. 联系我们",
           "content": "如果您对这些使用条款有任何疑问，请通过以下方式联系我们：",
           "email": "邮箱：legal@pawmed.cn",
-          "address": "地址：中国香港爪子製藥有限公司",
-          "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+          "address": "地址：爪子制药发展（深圳）有限公司",
+          "details": "深圳市福田区梅林街道北环大道6018号1栋5层502"
         }
       }
     }
@@ -1210,8 +1223,11 @@
     }
   },
   "company": {
-    "nameZhValue": "爪子製藥有限公司",
-    "typeValue": "私人股份有限公司",
+    "nameZhValue": "爪子制药发展（深圳）有限公司",
+    "nameEnValue": "Paw Therapeutics Limited",
+    "regNumberValue": "91440300MAEL7Y0G3L",
+    "typeValue": "有限责任公司(自然人独资)",
+    "regDateValue": "2025年05月23日",
     "statusValue": "成立",
     "addressLabel": "地址：",
     "addressValue": "深圳市福田区梅林街道北环大道6018号1栋5层502"

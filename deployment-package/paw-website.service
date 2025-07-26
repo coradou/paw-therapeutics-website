@@ -1,0 +1,33 @@
+[Unit]
+Description=爪子制药网站守护进程
+Documentation=https://www.pawmed.cn
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/paw-website
+ExecStart=/var/www/paw-website/guardian-daemon.sh
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=paw-website
+
+# 安全设置
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ReadWritePaths=/var/www/paw-website
+EnvironmentFile=-/var/www/paw-website/.env.local
+
+# 资源限制
+LimitNOFILE=65536
+MemoryHigh=1G
+MemoryMax=1.5G
+
+[Install]
+WantedBy=multi-user.target 

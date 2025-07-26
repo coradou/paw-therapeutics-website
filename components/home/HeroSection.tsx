@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useI18n } from '../../lib/i18n';
 import Image from 'next/image';
@@ -8,7 +8,38 @@ import ScrollAnimatedElement from '../ui/ScrollAnimatedElement';
 import OptimizedImage from '../ui/OptimizedImage';
 
 export default function HeroSection() {
-  const { t } = useI18n();
+  const { t, isHydrated } = useI18n();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Render loading state until hydrated and mounted
+  if (!isHydrated || !isMounted) {
+    return (
+      <section className="min-h-[calc(100vh-4rem)] flex items-center bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6 order-2 md:order-1">
+              <div className="animate-pulse">
+                <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
+                <div className="h-16 bg-gray-200 rounded mb-4"></div>
+                <div className="h-6 bg-gray-200 rounded w-1/2 mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+              </div>
+            </div>
+            <div className="relative order-1 md:order-2 max-w-sm mx-auto md:max-w-none">
+              <div className="animate-pulse">
+                <div className="aspect-square bg-gray-200 rounded-3xl"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-4rem)] flex items-center bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
@@ -22,8 +53,13 @@ export default function HeroSection() {
       </ScrollAnimatedElement>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<<<<<<< HEAD
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           <div className="space-y-3 md:space-y-6 order-2 md:order-1">
+=======
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="space-y-6 order-2 md:order-1">
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
             <ScrollAnimatedElement animation="fade-up" delay={0}>
             <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-paw-primary/10 to-paw-accent/10 px-3 py-1.5 md:px-4 md:py-2 rounded-full">
               <div className="w-2 h-2 bg-paw-primary rounded-full animate-pulse"></div>
@@ -76,7 +112,7 @@ export default function HeroSection() {
             </div>
           </div>
           
-          <ScrollAnimatedElement animation="blur" delay={300} className="relative order-1 md:order-2">
+          <ScrollAnimatedElement animation="blur" delay={300} className="relative order-1 md:order-2 max-w-sm mx-auto md:max-w-none">
             <div className="relative">
               {/* 3D卡片效果 */}
               <div className="absolute inset-0 bg-gradient-to-br from-paw-primary to-paw-deep rounded-3xl transform rotate-6 opacity-20"></div>
@@ -131,7 +167,11 @@ export default function HeroSection() {
               </div>
             </div>
             <ScrollAnimatedElement animation="fade-up" delay={1200}>
+<<<<<<< HEAD
             <p className="text-center mt-3 md:mt-6 text-sm md:text-lg font-medium text-paw-primary/90">
+=======
+            <p className="text-center mt-6 text-lg font-medium text-paw-primary/90">
+>>>>>>> d2870ead384b61a715ce1736d2922594e3709319
               {t.hero.bottomText}
             </p>
             </ScrollAnimatedElement>
