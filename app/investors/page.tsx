@@ -50,15 +50,15 @@ export default function InvestorsPage() {
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-100">
                   <span className="text-paw-dark/70">{t.investors.registration.nameEn}</span>
-                  <span className="font-medium text-paw-dark">PAW THERAPEUTICS LIMITED</span>
+                  <span className="font-medium text-paw-dark">Paw Therapeutics Development (Shenzhen) Co., Ltd.</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-100">
                   <span className="text-paw-dark/70">{t.investors.registration.regNumber}</span>
-                  <span className="font-medium text-paw-dark">79053642-000-11-24-7</span>
+                  <span className="font-medium text-paw-dark">91440300MAEL7Y0G3L</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-100">
                   <span className="text-paw-dark/70">{t.investors.registration.regDate}</span>
-                  <span className="font-medium text-paw-dark">2024-11-22</span>
+                  <span className="font-medium text-paw-dark">2025-05-23</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-100">
                   <span className="text-paw-dark/70">{t.investors.registration.companyType}</span>
@@ -69,7 +69,7 @@ export default function InvestorsPage() {
                   <span className="font-medium text-green-600">{t.company.statusValue}</span>
                 </div>
               </div>
-              <a href="https://www.cr.gov.hk/" target="_blank" className="inline-flex items-center text-paw-primary hover:text-paw-deep transition-colors mt-4">
+              <a href="https://www.qcc.com/firm/69fe1318da6f04ae72accad7ee0e42cf.html" target="_blank" className="inline-flex items-center text-paw-primary hover:text-paw-deep transition-colors mt-4">
                 {t.investors.registration.link}
                 <ExternalLink className="w-4 h-4 ml-2" />
               </a>
@@ -85,7 +85,7 @@ export default function InvestorsPage() {
                 </a>
                 <div className="mt-4 text-white/90">
                   <p className="text-sm font-medium mb-2">{t.company.addressLabel}</p>
-                  <p className="text-sm leading-relaxed">{t.company.addressValue}</p>
+                  <p className="text-sm leading-relaxed whitespace-pre-line">{t.company.addressValue}</p>
                 </div>
               </div>
             </div>

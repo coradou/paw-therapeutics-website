@@ -11,6 +11,7 @@ export default function ContactPage() {
     company: '',
     message: ''
   })
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error' | null
@@ -24,18 +25,56 @@ export default function ContactPage() {
     }))
   }
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const files = Array.from(e.target.files)
+      const validFiles = files.filter(file => {
+        const validTypes = [
+          'application/pdf',
+          'application/msword',
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+          'application/vnd.ms-powerpoint',
+          'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+        ]
+        return validTypes.includes(file.type) && file.size <= 10 * 1024 * 1024 // 10MB限制
+      })
+      
+      if (validFiles.length !== files.length) {
+        setSubmitStatus({
+          type: 'error',
+          message: t.contact?.form?.attachments?.validationError || '只支持PDF、Word、PPT格式文件，且文件大小不超过10MB'
+        })
+        return
+      }
+      
+      setUploadedFiles(prev => [...prev, ...validFiles])
+    }
+  }
+
+  const removeFile = (index: number) => {
+    setUploadedFiles(prev => prev.filter((_, i) => i !== index))
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus({ type: null, message: '' })
 
     try {
+      const formDataWithFiles = new FormData()
+      formDataWithFiles.append('name', formData.name)
+      formDataWithFiles.append('email', formData.email)
+      formDataWithFiles.append('company', formData.company)
+      formDataWithFiles.append('message', formData.message)
+      
+      // 添加文件
+      uploadedFiles.forEach((file, index) => {
+        formDataWithFiles.append('files', file)
+      })
+
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formDataWithFiles,
       })
 
       const data = await response.json()
@@ -52,6 +91,7 @@ export default function ContactPage() {
           company: '',
           message: ''
         })
+        setUploadedFiles([])
       } else {
         setSubmitStatus({
           type: 'error',
@@ -144,6 +184,59 @@ export default function ContactPage() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-paw-primary"
                   placeholder={t.contact?.form?.placeholder?.message}
                 />
+              </div>
+
+              {/* 文件上传 */}
+              <div>
+                <label className="block text-sm font-medium text-paw-dark mb-2">
+                  {t.contact?.form?.attachments?.title || '附件上传'} ({t.contact?.form?.attachments?.description || '支持PDF、Word、PPT格式，最大10MB'})
+                </label>
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-paw-primary transition-colors">
+                  <input
+                    type="file"
+                    multiple
+                    accept=".pdf,.doc,.docx,.ppt,.pptx"
+                    onChange={handleFileChange}
+                    className="hidden"
+                    id="file-upload"
+                  />
+                  <label htmlFor="file-upload" className="cursor-pointer">
+                    <div className="flex flex-col items-center">
+                      <svg className="w-12 h-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      <span className="text-sm text-gray-600">{t.contact?.form?.attachments?.selectFiles || '点击选择文件或拖拽文件到此处'}</span>
+                      <span className="text-xs text-gray-400 mt-1">{t.contact?.form?.attachments?.supportedFormats || '支持PDF、Word、PPT格式'}</span>
+                    </div>
+                  </label>
+                </div>
+                
+                {/* 已上传文件列表 */}
+                {uploadedFiles.length > 0 && (
+                  <div className="mt-4 space-y-2">
+                    <p className="text-sm font-medium text-paw-dark">{t.contact?.form?.attachments?.selectedFiles || '已选择的文件：'}</p>
+                    {uploadedFiles.map((file, index) => (
+                      <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                        <div className="flex items-center space-x-2">
+                          <svg className="w-5 h-5 text-paw-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                          <span className="text-sm text-gray-700">{file.name}</span>
+                          <span className="text-xs text-gray-500">({(file.size / 1024 / 1024).toFixed(2)}{t.contact?.form?.attachments?.fileSizeFormat || ' MB'})</span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => removeFile(index)}
+                          className="text-red-500 hover:text-red-700 transition-colors"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
               
               <button

@@ -12,6 +12,7 @@ interface Milestone {
   icon: string
   color: string
   bgColor: string
+  year: string
 }
 
 export default function MilestonesPage() {
@@ -56,7 +57,8 @@ export default function MilestonesPage() {
         description: safeGet('awards.page.milestones.items.0.description', '爪子制药正式成立，开启AI驱动的跨物种延寿药物发现之旅'),
         icon: '🏢',
         color: 'from-blue-500 to-purple-600',
-        bgColor: 'bg-blue-50'
+        bgColor: 'bg-blue-50',
+        year: '2025年'
       },
       {
         id: '2',
@@ -64,7 +66,8 @@ export default function MilestonesPage() {
         description: safeGet('awards.page.milestones.items.1.description', '成功完成AI驱动的跨物种延寿药物发现平台核心技术架构'),
         icon: '🔬',
         color: 'from-green-500 to-teal-600',
-        bgColor: 'bg-green-50'
+        bgColor: 'bg-green-50',
+        year: '2025年'
       },
       {
         id: '3',
@@ -72,7 +75,8 @@ export default function MilestonesPage() {
         description: safeGet('awards.page.milestones.items.2.description', '宠物DNA甲基化衰老检测技术原型完成，为延寿药物开发奠定基础'),
         icon: '🧬',
         color: 'from-purple-500 to-pink-600',
-        bgColor: 'bg-purple-50'
+        bgColor: 'bg-purple-50',
+        year: '2025年'
       },
       {
         id: '4',
@@ -80,7 +84,8 @@ export default function MilestonesPage() {
         description: safeGet('awards.page.milestones.items.3.description', '在深圳建立研发中心，汇聚顶尖人才，加速技术创新'),
         icon: '🏭',
         color: 'from-orange-500 to-red-600',
-        bgColor: 'bg-orange-50'
+        bgColor: 'bg-orange-50',
+        year: '2025年'
       },
       {
         id: '5',
@@ -88,7 +93,8 @@ export default function MilestonesPage() {
         description: safeGet('awards.page.milestones.items.4.description', '聚集了来自全球的顶尖科学家和工程师，形成强大的技术团队'),
         icon: '👥',
         color: 'from-teal-500 to-blue-600',
-        bgColor: 'bg-teal-50'
+        bgColor: 'bg-teal-50',
+        year: '2025年'
       },
       {
         id: '6',
@@ -96,7 +102,8 @@ export default function MilestonesPage() {
         description: safeGet('awards.page.milestones.items.5.description', '官方网站正式上线，展示公司愿景和技术实力'),
         icon: '🌐',
         color: 'from-indigo-500 to-purple-600',
-        bgColor: 'bg-indigo-50'
+        bgColor: 'bg-indigo-50',
+        year: '2025年'
       }
     ]
   }
@@ -182,6 +189,11 @@ export default function MilestonesPage() {
                               {milestone.icon}
                             </div>
                             <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between mb-2">
+                                <span className={`text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-gradient-to-r ${milestone.color} text-white shadow-md`}>
+                                  {milestone.year}
+                                </span>
+                              </div>
                               <h3 className="text-lg sm:text-xl font-bold text-paw-dark mb-3 leading-snug break-words">
                                 {milestone.title}
                               </h3>
@@ -224,6 +236,11 @@ export default function MilestonesPage() {
                               {milestone.icon}
                             </div>
                             <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between mb-2">
+                                <span className={`text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-r ${milestone.color} text-white shadow-md`}>
+                                  {milestone.year}
+                                </span>
+                              </div>
                               <h3 className="text-base sm:text-lg font-bold text-paw-dark mb-2 leading-snug break-words">
                                 {milestone.title}
                               </h3>

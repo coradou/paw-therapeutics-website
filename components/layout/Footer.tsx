@@ -28,7 +28,7 @@ export default function Footer() {
     <>
       <footer className="bg-paw-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-          <div className="grid grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-8">
             {/* 公司信息 */}
             <div className="space-y-1 md:space-y-4 text-center md:text-left">
               <div className="flex items-center space-x-1 md:space-x-2 justify-center md:justify-start">
@@ -54,7 +54,6 @@ export default function Footer() {
             
             {/* 主导航链接 */}
             <div className="text-center md:text-left">
-              <h3 className="font-semibold mb-1 md:mb-4 text-xs md:text-base">{t.footer?.sections?.company || "公司"}</h3>
               <ul className="space-y-0.5 md:space-y-2">
                 {navItems.slice(0, 4).map((item) => (
                   <li key={item.key}>
@@ -68,7 +67,6 @@ export default function Footer() {
             
             {/* 产品与服务 */}
             <div className="text-center md:text-left">
-              <h3 className="font-semibold mb-1 md:mb-4 text-xs md:text-base">{t.footer?.sections?.products || "产品与服务"}</h3>
               <ul className="space-y-0.5 md:space-y-2">
                 {navItems.slice(4, 6).map((item) => (
                   <li key={item.key}>
@@ -87,7 +85,6 @@ export default function Footer() {
             
             {/* 资源与支持 */}
             <div className="text-center md:text-left">
-              <h3 className="font-semibold mb-1 md:mb-4 text-xs md:text-base">{t.footer?.sections?.resources || "资源与支持"}</h3>
               <ul className="space-y-0.5 md:space-y-2">
                 {navItems.slice(6).map((item) => (
                   <li key={item.key}>
@@ -144,7 +141,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-xs text-gray-600">
-              Copyright © 2025 Paw Therapeutics. All Rights Reserved. 爪子制药有限公司 版权所有
+              Copyright © 2025 Paw Therapeutics. All Rights Reserved. 爪子制药发展(深圳)有限公司 版权所有
             </p>
           </div>
         </div>

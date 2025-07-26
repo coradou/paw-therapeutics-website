@@ -160,48 +160,48 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             <AnimatedElement animation="fade-up" delay={300}>
-              <div className="text-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="text-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
                 <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <CheckCircle className="w-8 h-8 text-blue-500" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gray-800">{t.about.responsibility.ethics.title}</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed flex-grow">
                   {t.about.responsibility.ethics.content}
                 </p>
               </div>
             </AnimatedElement>
 
             <AnimatedElement animation="fade-up" delay={400}>
-              <div className="text-center bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="text-center bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
                 <div className="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Leaf className="w-8 h-8 text-green-500" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gray-800">{t.about.responsibility.sustainability.title}</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed flex-grow">
                   {t.about.responsibility.sustainability.content}
                 </p>
               </div>
             </AnimatedElement>
 
             <AnimatedElement animation="fade-up" delay={500}>
-              <div className="text-center bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="text-center bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
                 <div className="w-16 h-16 bg-pink-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <HandHeart className="w-8 h-8 text-pink-500" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gray-800">{t.about.responsibility.animalWelfare.title}</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed flex-grow">
                   {t.about.responsibility.animalWelfare.content}
                 </p>
               </div>
             </AnimatedElement>
 
             <AnimatedElement animation="fade-up" delay={600}>
-              <div className="text-center bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="text-center bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
                 <div className="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Globe className="w-8 h-8 text-purple-500" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gray-800">{t.about.responsibility.healthcare.title}</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed flex-grow">
                   {t.about.responsibility.healthcare.content}
                 </p>
               </div>

@@ -16,21 +16,21 @@ export default function NewsSection() {
       date: t.news.latest.items[0].date,
       title: t.news.latest.items[0].title,
       summary: t.news.latest.items[0].summary,
-      link: "https://www.sohu.com/a/831971058_120088173"
+      link: "http://www.cistc.gov.cn/projectdetail.html?column=362&id=9130"
     },
     {
       category: t.news.latest.items[1].category,
       date: t.news.latest.items[1].date,
       title: t.news.latest.items[1].title,
       summary: t.news.latest.items[1].summary,
-      link: "https://cn.chinadaily.com.cn/a/202405/29/WS665721a5a3109f7860de0066.html"
+      link: "https://www.sohu.com/a/831971058_120088173"
     },
     {
       category: t.news.latest.items[2].category,
       date: t.news.latest.items[2].date,
       title: t.news.latest.items[2].title,
       summary: t.news.latest.items[2].summary,
-      link: "https://www.linkedin.com/posts/paw-therapeutics_petlongevity-aiinbiotech-veterinaryinnovation-activity-7336176955270090752-qxQy"
+      link: "https://cn.chinadaily.com.cn/a/202405/29/WS665721a5a3109f7860de0066.html"
     },
     // 额外的新闻内容
     ...t.news.extraNews.map((news: any) => ({

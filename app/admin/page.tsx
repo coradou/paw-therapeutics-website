@@ -19,6 +19,26 @@ interface ResumeData {
     suggestions: string[];
     analyzedAt: string;
   };
+  interviewData?: {
+    submittedAt: string;
+    interviewDuration: number;
+    chatHistory: Array<{
+      role: 'user' | 'assistant';
+      content: string;
+      timestamp: string;
+    }>;
+    evaluation: {
+      overallScore: number;
+      technicalScore: number;
+      communicationScore: number;
+      experienceScore: number;
+      recommendation: 'recommended' | 'consider' | 'not_recommended';
+      strengths: string[];
+      weaknesses: string[];
+      summary: string;
+      suggestions: string[];
+    };
+  };
   submittedAt: string;
   status: 'new' | 'reviewed' | 'contacted' | 'rejected';
   notes?: string;
@@ -528,7 +548,7 @@ export default function AdminPage() {
                   className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-paw-primary focus:border-transparent"
                 >
                   <option value="all">全部</option>
-                  <option value="new">新投递</option>
+                  <option value="new">待审核</option>
                   <option value="reviewed">已审核</option>
                   <option value="contacted">已联系</option>
                   <option value="rejected">已拒绝</option>

@@ -11,7 +11,7 @@ export default function HeroSection() {
   const { t } = useI18n();
 
   return (
-    <section className="min-h-[calc(100vh-4rem)] flex items-center bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+    <section className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-4rem)] flex items-center bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
       {/* 背景装饰 */}
       <div className="absolute inset-0 tech-pattern opacity-5"></div>
       <ScrollAnimatedElement animation="scale" className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-blue-200/30 to-teal-200/30 rounded-full blur-3xl floating">
@@ -22,36 +22,30 @@ export default function HeroSection() {
       </ScrollAnimatedElement>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 order-2 md:order-1">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
+          <div className="space-y-3 md:space-y-6 order-2 md:order-1">
             <ScrollAnimatedElement animation="fade-up" delay={0}>
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-paw-primary/10 to-paw-accent/10 px-4 py-2 rounded-full">
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-paw-primary/10 to-paw-accent/10 px-3 py-1.5 md:px-4 md:py-2 rounded-full">
               <div className="w-2 h-2 bg-paw-primary rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-paw-dark">{t.hero.tagline}</span>
+              <span className="text-xs md:text-sm font-medium text-paw-dark">{t.hero.tagline}</span>
             </div>
             </ScrollAnimatedElement>
             
-            <ScrollAnimatedElement animation="fade-up" delay={100}>
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold leading-tight">
               <span className="text-paw-dark">{t.hero.title}</span><br/>
                 <span className="gradient-text animate-gradient">{t.hero.subtitle}</span>
             </h1>
-            </ScrollAnimatedElement>
             
-            <ScrollAnimatedElement animation="fade-up" delay={200}>
-            <h2 className="text-2xl md:text-3xl text-paw-dark/80 font-light">
+            <h2 className="text-lg md:text-2xl lg:text-3xl text-paw-dark/80 font-light">
               {t.hero.platform}
             </h2>
-            </ScrollAnimatedElement>
             
-            <ScrollAnimatedElement animation="fade-up" delay={300}>
-            <p className="text-lg text-paw-dark/70 leading-relaxed">
+            <p className="text-sm md:text-lg text-paw-dark/70 leading-relaxed">
               {t.hero.description}
             </p>
-            </ScrollAnimatedElement>
             
             <ScrollAnimatedElement animation="fade-up" delay={400}>
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-wrap gap-3 md:gap-4 pt-1 md:pt-4">
               <Link href="#about" className="btn-primary group">
                 <span className="relative z-10">{t.hero.primary}</span>
               </Link>
@@ -60,23 +54,23 @@ export default function HeroSection() {
             </ScrollAnimatedElement>
             
             {/* 数据展示 */}
-            <div className="grid grid-cols-3 gap-4 pt-8">
+            <div className="grid grid-cols-3 gap-3 md:gap-4 pt-3 md:pt-8">
               <ScrollAnimatedElement animation="scale" delay={500}>
               <div className="text-center">
-                <div className="text-2xl font-bold text-paw-primary">{t.stats.accuracy.value}</div>
-                <div className="text-sm text-paw-dark/60">{t.stats.accuracy.label}</div>
+                <div className="text-lg md:text-2xl font-bold text-paw-primary">{t.stats.accuracy.value}</div>
+                <div className="text-xs md:text-sm text-paw-dark/60">{t.stats.accuracy.label}</div>
               </div>
               </ScrollAnimatedElement>
               <ScrollAnimatedElement animation="scale" delay={600}>
               <div className="text-center">
-                <div className="text-2xl font-bold text-paw-primary">{t.stats.compounds.value}</div>
-                <div className="text-sm text-paw-dark/60">{t.stats.compounds.label}</div>
+                <div className="text-lg md:text-2xl font-bold text-paw-primary">{t.stats.compounds.value}</div>
+                <div className="text-xs md:text-sm text-paw-dark/60">{t.stats.compounds.label}</div>
               </div>
               </ScrollAnimatedElement>
               <ScrollAnimatedElement animation="scale" delay={700}>
               <div className="text-center">
-                <div className="text-2xl font-bold text-paw-primary">{t.stats.time.value}</div>
-                <div className="text-sm text-paw-dark/60">{t.stats.time.label}</div>
+                <div className="text-lg md:text-2xl font-bold text-paw-primary">{t.stats.time.value}</div>
+                <div className="text-xs md:text-sm text-paw-dark/60">{t.stats.time.label}</div>
               </div>
               </ScrollAnimatedElement>
             </div>
@@ -117,8 +111,8 @@ export default function HeroSection() {
                 </div>
                 
                 {/* Logo标记 */}
-                <ScrollAnimatedElement animation="scale" delay={800} className="absolute top-6 right-6 glass-card p-3">
-                  <svg viewBox="0 0 100 100" className="w-12 h-12">
+                <ScrollAnimatedElement animation="scale" delay={800} className="absolute top-4 md:top-6 right-4 md:right-6 glass-card p-2 md:p-3">
+                  <svg viewBox="0 0 100 100" className="w-6 md:w-12 h-6 md:h-12">
                     <ellipse cx="35" cy="25" rx="8" ry="12" fill="#0F1114"/>
                     <ellipse cx="50" cy="20" rx="8" ry="12" fill="#0F1114"/>
                     <ellipse cx="65" cy="25" rx="8" ry="12" fill="#0F1114"/>
@@ -131,14 +125,14 @@ export default function HeroSection() {
                 </ScrollAnimatedElement>
                 
                 {/* 科技感装饰线 */}
-                <ScrollAnimatedElement animation="slide-left" delay={1000} className="absolute bottom-6 left-6 right-6">
+                <ScrollAnimatedElement animation="slide-left" delay={1000} className="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6">
                   <div className="h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
                 </ScrollAnimatedElement>
               </div>
             </div>
             <ScrollAnimatedElement animation="fade-up" delay={1200}>
-            <p className="text-center mt-6 text-lg font-light text-paw-dark/80">
-              <span className="text-paw-primary font-semibold">守护</span>每一个生命的美好时光
+            <p className="text-center mt-3 md:mt-6 text-sm md:text-lg font-medium text-paw-primary/90">
+              {t.hero.bottomText}
             </p>
             </ScrollAnimatedElement>
           </ScrollAnimatedElement>

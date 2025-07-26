@@ -308,3 +308,199 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(0);
   }
 } 
+
+/* 鼠标脚印尾焰优化 */
+.mouse-trail-container {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.paw-print-trail {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-origin: center;
+}
+
+/* 性能优化的过渡效果 */
+.trail-transition {
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+
+/* 流式加载动画效果 */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.shimmer-effect {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* 渐进式图片加载 */
+.progressive-image {
+  position: relative;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.progressive-image img {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.progressive-image .low-quality {
+  filter: blur(5px);
+  transform: scale(1.05);
+}
+
+.progressive-image .high-quality {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 骨架屏加载动画 */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+/* 卡片流式加载动画 */
+.card-stream-in {
+  animation: cardStreamIn 0.6s ease-out forwards;
+}
+
+@keyframes cardStreamIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 内容优先级加载 */
+.priority-high {
+  animation-delay: 0ms !important;
+}
+
+.priority-medium {
+  animation-delay: 200ms !important;
+}
+
+.priority-low {
+  animation-delay: 400ms !important;
+}
+
+/* 改进的脉冲动画 */
+.pulse-enhanced {
+  animation: pulseEnhanced 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseEnhanced {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.02);
+  }
+}
+
+/* 流畅的淡入动画 */
+.fade-in-smooth {
+  animation: fadeInSmooth 0.8s ease-out forwards;
+}
+
+@keyframes fadeInSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 加载状态指示器 */
+.loading-indicator {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-indicator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  animation: loadingWave 2s infinite;
+}
+
+@keyframes loadingWave {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* 智能预加载动画 */
+.preload-hint {
+  animation: preloadHint 3s ease-in-out infinite;
+}
+
+@keyframes preloadHint {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+} 

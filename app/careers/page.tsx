@@ -183,7 +183,7 @@ export default function CareersPage() {
         setCurrentSessionId(data.sessionId);
         const welcomeMessage = {
           role: 'assistant' as const,
-          content: data.message || `您好！欢迎参加${jobTitle}职位的AI面试。请点击下方的"开始录音"按钮，用语音回答我的问题。准备好了就开始吧！`,
+          content: data.message || `您好！欢迎参加${jobTitle}职位的AI面试。请点击下方的&ldquo;开始录音&rdquo;按钮，用语音回答我的问题。准备好了就开始吧！`,
           timestamp: new Date()
         };
         setConversationHistory([welcomeMessage]);
@@ -1198,123 +1198,7 @@ ${evaluationData.summary.weaknesses.map((s: string) => `• ${s}`).join('\n')}
               </ul>
             </div>
             
-            {/* AI 面试功能区域 */}
             <div className="pt-4 border-t">
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <button
-                  onClick={startAIInterview}
-                  disabled={isProcessing}
-                  className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-6 rounded-full font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
-                >
-                  {isProcessing ? (
-                    <>
-                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                      </svg>
-                      启动中...
-                    </>
-                  ) : (
-                    <>
-                      🤖 开始 AI 面试
-                    </>
-                  )}
-                </button>
-                
-                <div className="flex-1 text-center">
-                  <div className="text-sm text-gray-600">或者</div>
-                </div>
-              </div>
-              
-              {/* AI 面试界面 */}
-              {isAIInterviewMode && (
-                <div className="mb-6 p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border border-blue-200">
-                  <div className="flex items-center justify-between mb-4">
-                    <h4 className="text-lg font-bold text-blue-900">🤖 AI 面试进行中</h4>
-                    <button
-                      onClick={endAIInterview}
-                      disabled={isEvaluating}
-                      className="text-red-500 hover:text-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {isEvaluating ? '评估中...' : '结束面试'}
-                    </button>
-                  </div>
-                  
-                  {/* 评估状态提示 */}
-                  {isEvaluating && (
-                    <div className="mb-4 p-3 bg-yellow-100 border border-yellow-200 rounded-lg">
-                      <div className="flex items-center gap-2 text-yellow-700">
-                        <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                        </svg>
-                        <span className="text-sm font-medium">正在进行AI评估，请稍候...</span>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* 聊天记录 */}
-                  <div className="max-h-60 overflow-y-auto mb-4 space-y-3">
-                    {conversationHistory.map((message, index) => (
-                      <div
-                        key={index}
-                        className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                      >
-                        <div
-                          className={`max-w-xs px-4 py-2 rounded-lg ${
-                            message.role === 'user'
-                              ? 'bg-blue-500 text-white'
-                              : 'bg-white text-gray-800 border border-gray-200'
-                          }`}
-                        >
-                          <p className="text-sm whitespace-pre-line">{message.content}</p>
-                          <p className="text-xs opacity-75 mt-1">
-                            {message.timestamp.toLocaleTimeString('zh-CN')}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* 语音控制按钮 */}
-                  <div className="flex justify-center gap-4 py-4">
-                    {isListening ? (
-                      <button
-                        onClick={stopVoiceRecording}
-                        disabled={isProcessing || isEvaluating}
-                        className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-semibold transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                        停止录音
-                      </button>
-                    ) : (
-                      <button
-                        onClick={startVoiceRecording}
-                        disabled={isProcessing || isEvaluating}
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        🎤 开始录音
-                      </button>
-                    )}
-                    
-                    {/* 处理状态显示 */}
-                    {(isProcessing || isEvaluating) && (
-                      <div className="flex items-center text-blue-600">
-                        <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                        </svg>
-                        {isEvaluating ? '评估中...' : '处理中...'}
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div className="mt-2 text-center text-sm text-gray-600">
-                    💡 提示：点击"开始录音"按钮进行语音回答
-                  </div>
-                </div>
-              )}
-
               <h3 className="text-lg font-bold text-paw-dark mb-4">💼 {getNestedTranslation(t, 'careers.resumeForm.title')}</h3>
               
               <form onSubmit={handleSubmit} className="space-y-4">

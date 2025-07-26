@@ -1,10 +1,62 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useI18n } from '../../lib/i18n';
 import Image from 'next/image';
 import ScrollAnimatedElement from '../ui/ScrollAnimatedElement';
 
 export default function AboutSection() {
   const { t } = useI18n();
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+
+  // 监听视频容器是否进入可视区域
+  useEffect(() => {
+    const container = videoContainerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsInView(entry.isIntersecting);
+        
+        // 当进入可视区域时自动加载并播放视频
+        if (entry.isIntersecting && !isVideoLoaded) {
+          setIsVideoLoaded(true);
+        }
+      },
+      {
+        threshold: 0.3, // 当30%的区域可见时触发
+        rootMargin: '0px 0px -10% 0px' // 提前一点触发
+      }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [isVideoLoaded]);
+
+  // 控制视频播放/暂停
+  useEffect(() => {
+    if (videoRef.current && isVideoLoaded) {
+      if (isInView) {
+        // 添加延迟和更好的错误处理
+        const playPromise = videoRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            // 忽略AbortError，这是正常的暂停行为
+            if (error.name !== 'AbortError') {
+              console.warn('Video play failed:', error);
+            }
+          });
+        }
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isInView, isVideoLoaded]);
   
   return (
     <section id="about" className="py-16 md:py-24 bg-gray-50 relative overflow-hidden">
@@ -26,37 +78,55 @@ export default function AboutSection() {
           
           {/* 公司宣传视频 */}
           <ScrollAnimatedElement animation="video" delay={200}>
-            <div className="max-w-5xl mx-auto mb-16">
+            <div className="max-w-5xl mx-auto mb-16" ref={videoContainerRef}>
               <div className="bg-white rounded-3xl shadow-2xl p-4">
                 <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-2xl bg-black">
-                  {/* YouTube视频嵌入 */}
-                  <iframe 
-                    src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0&modestbranding=1&controls=1&showinfo=0&autoplay=0&mute=1"
-                    title={t.about.videoTitle}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="absolute top-0 left-0 w-full h-full rounded-2xl"
-                    loading="lazy">
-                  </iframe>
-                  
-                  {/* 备用占位符 - 如果视频加载失败 */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-paw-primary/10 to-paw-secondary/10 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <div className="text-center p-8">
-                      <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
+                  {!isVideoLoaded ? (
+                    /* 视频占位符 - 滚动到此处自动加载视频 */
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-paw-primary/20 to-paw-secondary/20 transition-all duration-300">
+                      <div className="text-center p-8">
+                        <div className="w-20 h-20 mx-auto mb-4 bg-white/90 rounded-full flex items-center justify-center transition-transform duration-300 shadow-lg animate-pulse">
+                          <svg className="w-10 h-10 text-paw-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-2">{t.company.name}</h3>
+                        <p className="text-sm text-white/90 mb-2">公司宣传视频</p>
+                        <p className="text-xs text-white/70">滚动到此处自动播放</p>
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2">公司宣传视频</h3>
-                      <p className="text-sm text-white/80">点击播放了解更多</p>
+                      
+                      {/* 装饰元素 */}
+                      <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full animate-pulse"></div>
+                      <div className="absolute bottom-4 left-4 w-6 h-6 bg-white/15 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                      <div className="absolute top-1/3 left-8 w-4 h-4 bg-white/10 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
                     </div>
-                  </div>
+                  ) : (
+                    /* 本地MP4视频播放 - 滚动到此处自动加载并播放 */
+                    <video 
+                      ref={videoRef}
+                      src="/videos/ff402f56998b4e00b7000a1bf2d25a71.mp4"
+                      className="absolute top-0 left-0 w-full h-full rounded-2xl object-cover"
+                      controls
+                      muted={true}
+                      playsInline
+                      preload="metadata"
+                      loop
+                      style={{
+                        backgroundColor: '#000'
+                      }}
+                    >
+                      <source src="/videos/ff402f56998b4e00b7000a1bf2d25a71.mp4" type="video/mp4" />
+                      您的浏览器不支持视频播放。
+                    </video>
+                  )}
                 </div>
               </div>
-              <p className="text-lg text-gray-700 mt-6 text-center font-medium">
-                {t.company.name} - 让爱活得更久 (Let Love Live Longer)
-              </p>
+              <div className="mt-6 text-center">
+                <p className="text-lg text-gray-700 font-medium mb-3">
+                  {t.company.name} - 让爱活得更久 (Let Love Live Longer)
+                </p>
+
+              </div>
             </div>
           </ScrollAnimatedElement>
         </div>
@@ -126,15 +196,14 @@ export default function AboutSection() {
               <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg flex flex-col justify-center min-h-[20rem] auto-height-container relative overflow-hidden">
                 <div className="flex-1 rounded-xl overflow-hidden group">
                   {/* 金毛和主人的照片 */}
-                  <img src="/images/golden-retriever-owner.jpg" 
-                       alt="金毛犬和主人的温馨时刻" 
-                       className="w-full h-full min-h-[15rem] object-cover group-hover:scale-105 transition-transform duration-700"
-                       onError={(e) => {
-                         e.currentTarget.onerror = null;
-                         e.currentTarget.style.display = 'none';
-                         const nextSibling = e.currentTarget.nextElementSibling as HTMLElement;
-                         if (nextSibling) nextSibling.style.display = 'flex';
-                       }}/>
+                  <Image 
+                    src="/images/golden-retriever-owner.jpg" 
+                    alt="金毛犬和主人的温馨时刻" 
+                    width={600}
+                    height={400}
+                    className="w-full h-full min-h-[15rem] object-cover group-hover:scale-105 transition-transform duration-700"
+                    priority
+                  />
                   
                   {/* 占位符/后备内容 */}
                   <div className="absolute inset-6 md:inset-8 flex items-center justify-center bg-gradient-to-br from-paw-light to-white rounded-xl" style={{display: 'none'}}>

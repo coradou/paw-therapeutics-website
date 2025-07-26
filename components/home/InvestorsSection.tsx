@@ -68,19 +68,19 @@ export default function InvestorsSection() {
               <ScrollAnimatedElement animation="fade-up" delay={300}>
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{t.investors.registration.nameZh}</p>
-                  <p className="font-semibold">爪子製藥有限公司</p>
+                  <p className="font-semibold">爪子制药发展(深圳)有限公司</p>
                 </div>
               </ScrollAnimatedElement>
               <ScrollAnimatedElement animation="fade-up" delay={350}>
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{t.investors.registration.nameEn}</p>
-                  <p className="font-semibold">Paw Therapeutics Limited</p>
+                  <p className="font-semibold">Paw Therapeutics Development (Shenzhen) Co., Ltd.</p>
                 </div>
               </ScrollAnimatedElement>
               <ScrollAnimatedElement animation="fade-up" delay={400}>
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{t.investors.registration.regNumber}</p>
-                  <p className="font-semibold">78159356</p>
+                  <p className="font-semibold">91440300MAEL7Y0G3L</p>
                 </div>
               </ScrollAnimatedElement>
               <ScrollAnimatedElement animation="fade-up" delay={450}>
@@ -103,7 +103,7 @@ export default function InvestorsSection() {
               </ScrollAnimatedElement>
             </div>
             <ScrollAnimatedElement animation="fade-up" delay={600} className="text-center mt-6">
-              <a href="https://www.tempb.com/company?utm_source=paw-therapeutics-limited" target="_blank" className="inline-flex items-center text-paw-primary hover:text-paw-deep transition-colors font-medium">
+              <a href="https://www.qcc.com/firm/69fe1318da6f04ae72accad7ee0e42cf.html" target="_blank" className="inline-flex items-center text-paw-primary hover:text-paw-deep transition-colors font-medium">
                 {t.investors.registration.link}
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
@@ -121,10 +121,10 @@ export default function InvestorsSection() {
               <p className="text-xl mb-8 opacity-90">{t.investors.contact.description}</p>
               <div className="grid md:grid-cols-2 gap-6 text-lg">
                 <ScrollAnimatedElement animation="fade-up" delay={400}>
-                  <div>邮箱：{t.investors.contact.email}</div>
+                  <div>{t.investors.contact.emailLabel}{t.investors.contact.email}</div>
                 </ScrollAnimatedElement>
                 <ScrollAnimatedElement animation="fade-up" delay={450}>
-                  <div>地址：{t.investors.contact.address}</div>
+                  <div>{t.investors.contact.addressLabel}{t.investors.contact.address}</div>
                 </ScrollAnimatedElement>
               </div>
             </div>

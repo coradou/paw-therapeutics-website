@@ -24,7 +24,7 @@
     "description": "PAW Therapeutics is dedicated to accelerating anti-aging drug development for pets and humans through AI technology, enabling every life to enjoy longer, healthier companionship.",
     "primary": "Learn More",
     "secondary": "Contact Us",
-    "bottomText": "Guarding every beautiful moment of life"
+    "bottomText": "Protecting every beautiful moment of life"
   },
   "stats": {
     "title": "Data-Driven Innovation",
@@ -93,6 +93,12 @@
     "latest": {
       "title": "Latest Updates",
       "items": [
+        {
+          "date": "December 15, 2024",
+          "category": "Government Recognition",
+          "title": "PAW Therapeutics Listed on Ministry of Science and Technology Website",
+          "summary": "PAW Therapeutics project has been officially listed on the Ministry of Science and Technology website, marking the company's recognition and support from the government in the field of technological innovation."
+        },
         {
           "date": "November 30, 2024",
           "category": "Industry Events",
@@ -297,11 +303,10 @@
     "chartHeaders": [
       "Project Name",
       "Target",
-      "Research",
+      "Preclinical Research",
       "Clinical",
       "Approval",
       "Humanization",
-      "Partnership",
       ""
     ],
     "dogLongevity": "Dog Longevity",
@@ -313,10 +318,9 @@
         "status": "Clinical Stage",
         "description": "IL11 inhibitor for delaying canine aging process and improving quality of life in elderly dogs",
         "timeline": [
-          "2025 Research",
-          "2026 Clinical Approval",
-          "2028 Humanization",
-          "2029 Partnership"
+          "2025 Preclinical Research",
+          "2028 Clinical Approval",
+          "2030 Humanization"
         ]
       },
       "paw002": {
@@ -326,8 +330,8 @@
         "partner": "Granule Bio",
         "description": "IGF-1 regulator developed in collaboration with Granule Bio for extending canine lifespan",
         "timeline": [
-          "2025 Research",
-          "2028 Partnership"
+          "2025 Preclinical Research",
+          "2028 Clinical Approval"
         ]
       },
       "paw003": {
@@ -336,8 +340,8 @@
         "status": "Research Stage",
         "description": "TGF-β inhibitor for treating canine fibrotic diseases and delaying aging",
         "timeline": [
-          "2025 Research",
-          "2027 Clinical Approval"
+          "2025 Preclinical Research",
+          "2028 Clinical Approval"
         ]
       },
       "paw004": {
@@ -346,7 +350,7 @@
         "status": "Preclinical",
         "description": "Innovative therapeutic drug for canine arthritis to improve joint health in elderly dogs",
         "timeline": [
-          "2025 Research",
+          "2025 Preclinical Research",
           "2028 Clinical Approval"
         ]
       },
@@ -356,7 +360,7 @@
         "status": "Research Stage",
         "description": "Innovative drug for canine pancreatitis to improve digestive system health in elderly dogs",
         "timeline": [
-          "2025 Research",
+          "2025 Preclinical Research",
           "2027 Clinical Approval"
         ]
       }
@@ -391,7 +395,7 @@
     "imagePlaceholder": "Please upload product image",
     "methylationKit": {
       "name": "Pet Aging Methylation Test Kit",
-      "tag": "🐾 World's First",
+      "tag": "Proprietary Technology",
       "subtitle": "Precisely assess pet's biological age",
       "title": "Proprietary Technology",
       "description": "Using our proprietary technology and advanced DNA methylation analysis technology, scientifically assess your pet's biological age and health status, and develop personalized health management plans for your beloved pet.",
@@ -464,8 +468,8 @@
     "subtitle": "Transparency, Integrity, Win-Win",
     "description": "We are committed to establishing long-term stable partnerships with investors, achieving common growth of corporate value and shareholder value through transparent information disclosure and standard corporate governance.",
     "announcements": {
-      "title": "HK Announcements",
-      "description": "View our latest announcements published on the Hong Kong Stock Exchange",
+      "title": "Company Announcements",
+      "description": "View our latest company announcements and important notices",
       "coming": "Coming Soon"
     },
     "reports": {
@@ -477,16 +481,18 @@
       "title": "Company Registration Information",
       "nameZh": "Company Name (Chinese)",
       "nameEn": "Company Name (English)",
-      "regNumber": "Business Registration Number",
+      "regNumber": "Unified Social Credit Code",
       "regDate": "Registration Date",
       "companyType": "Company Type",
       "status": "Company Status",
-      "link": "View Hong Kong Company Registration Information"
+      "link": "View Company Registration Information"
     },
     "contact": {
       "title": "Investor Contact",
       "description": "For any investment-related inquiries, please contact our investor relations team",
+      "emailLabel": "Email: ",
       "email": "coradou@pawmed.cn",
+      "addressLabel": "Address: ",
       "address": "Room 502, 5th Floor, Building 1, No. 6018 Beihuan Avenue, Meilin Street, Futian District, Shenzhen"
     },
     "highlights": {
@@ -557,7 +563,7 @@
         },
         {
           "name": "Zhang Ying",
-          "title": "CSO"
+          "title": "CPO"
         }
       ]
     },
@@ -580,7 +586,7 @@
     },
     "zhangying": {
       "name": "Dr. Zhang Ying",
-      "role": "CSO", 
+      "role": "CPO", 
       "description": "PhD Supervisor at Sun Yat-sen University<br/>Founder of GranuLe Biotechnology (Over 100M RMB funding)<br/>Shenzhen 'Peacock Plan' Level-2 Talent"
     },
     "douqianyu": {
@@ -595,7 +601,7 @@
     },
     "lihangpeng": {
       "name": "Dr. Li Hangpeng",
-      "role": "CIO",
+      "role": "CSO",
       "description": "Oxford University Medical PhD Student<br/>First author in Nature Protocols<br/>Participated in Pfizer and J&J AI model development"
     }
   },
@@ -1226,16 +1232,37 @@
         "email": "Please enter your email",
         "company": "Please enter your company name (optional)",
         "message": "Please enter your message"
+      },
+      "attachments": {
+        "title": "File Upload",
+        "description": "Supports PDF, Word, PPT formats, max 10MB",
+        "selectFiles": "Click to select files or drag files here",
+        "supportedFormats": "Supports PDF, Word, PPT formats",
+        "selectedFiles": "Selected files:",
+        "fileSizeFormat": " MB",
+        "validationError": "Only PDF, Word, PPT format files are supported, with file size not exceeding 10MB"
       }
     },
     "info": {
       "title": "Contact Information",
+      "addresses": [
+        {
+          "title": "Shenzhen Office",
+          "company": "Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+          "details": "Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen"
+        },
+        {
+          "title": "Hong Kong Office",
+          "company": "PAW Therapeutics Limited",
+          "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+        }
+      ],
       "address": {
         "title": "Address",
-        "company": "PAW Therapeutics Limited",
-        "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+        "company": "Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+        "details": "Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen"
       },
-      "addressValue": "PAW Therapeutics Limited\nFLAT E19, 10/F, NO.52 HUNG TO ROAD,\nKWUN TONG, HONG KONG",
+      "addressValue": "Shenzhen Office: Paw Therapeutics Development (Shenzhen) Co., Ltd.\nRoom 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen\n\nHong Kong Office: PAW Therapeutics Limited\nFLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG",
       "email": {
         "title": "Email",
         "value": "coradou@pawmed.cn"
@@ -1384,8 +1411,8 @@
           "title": "11. Contact Us",
           "content": "If you have any questions about this privacy policy or need to exercise your rights, please contact us through:",
           "email": "Email: privacy@pawmed.cn",
-          "address": "Address: PAW Therapeutics Limited Hong Kong",
-          "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+          "address": "Address: Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+          "details": "Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen"
         }
       }
     },
@@ -1412,8 +1439,8 @@
           "title": "12. Contact Us",
           "content": "If you have any questions about these terms of use, please contact us through:",
           "email": "Email: legal@pawmed.cn",
-          "address": "Address: PAW Therapeutics Limited Hong Kong",
-          "details": "FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
+          "address": "Address: Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+          "details": "Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen"
         }
       }
     }
@@ -1438,10 +1465,10 @@
     "support": "Academic Support"
   },
   "company": {
-    "nameZhValue": "PAW Therapeutics Limited",
-    "typeValue": "Private Limited Company",
+    "nameZhValue": "Paw Therapeutics Development (Shenzhen) Co., Ltd.",
+    "typeValue": "Limited Liability Company (Sole Proprietorship)",
     "statusValue": "Incorporated",
     "addressLabel": "Address:",
-    "addressValue": "Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen"
+    "addressValue": "Shenzhen Office: Room 502, 5F, Building 1, No. 6018 North Ring Road, Meilin Street, Futian District, Shenzhen\nHong Kong Office: FLAT E19, 10/F, NO.52 HUNG TO ROAD, KWUN TONG, HONG KONG"
   }
 } 
